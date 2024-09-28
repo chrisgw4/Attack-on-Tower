@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Levels/level.gd" id="1_pj4s3"]
 [ext_resource type="Texture2D" uid="uid://bv0pojgt4e3sl" path="res://Pixel Art Top Down - Basic/Texture/TX Tileset Grass.png" id="2_ea0s2"]
 [ext_resource type="Texture2D" uid="uid://bwnu4ebsy23pq" path="res://Pixel Art Top Down - Basic/Texture/TX Props.png" id="3_byybq"]
-[ext_resource type="PackedScene" uid="uid://3phdegdil8hr" path="res://mana.tscn" id="4_8g01y"]
+[ext_resource type="PackedScene" uid="uid://3phdegdil8hr" path="res://Mana UI/mana.tscn" id="4_8g01y"]
 [ext_resource type="PackedScene" uid="uid://cdwgygfoa6ru2" path="res://TroopSelector/troop_selector.tscn" id="5_kkgmv"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7oala"]

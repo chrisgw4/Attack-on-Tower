@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://3phdegdil8hr"]
 
-[ext_resource type="Script" path="res://Mana.gd" id="1_32pui"]
+[ext_resource type="Script" path="res://Mana UI/Mana.gd" id="1_32pui"]
 [ext_resource type="FontFile" uid="uid://bsqyetpr5ufu8" path="res://Fonts/joystix monospace.otf" id="2_6y05p"]
 
 [node name="Mana" type="Container" node_paths=PackedStringArray("label")]

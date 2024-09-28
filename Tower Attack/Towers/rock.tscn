@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnvnhxeopfdja"]
+
+[ext_resource type="PackedScene" uid="uid://bsju6vdifpaa8" path="res://Towers/obstacle.tscn" id="1_ikymm"]
+[ext_resource type="Texture2D" uid="uid://hbj0m1sokphu" path="res://Pixel Art Top Down - Basic/Texture/TX Props-1.png.png" id="2_0nrfp"]
+[ext_resource type="Script" path="res://Towers/rock.gd" id="2_qxqrs"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_48qqh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0nrfp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e2wm8"]
+radius = 60.0083
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mfbgq"]
+radius = 46.0109
+
+[node name="Rock" node_paths=PackedStringArray("health_component", "health_bar", "stats") instance=ExtResource("1_ikymm")]
+script = ExtResource("2_qxqrs")
+health_component = NodePath("HealthComponent")
+health_bar = NodePath("ProgressBar")
+stats = NodePath("Stats")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_48qqh")
+
+[node name="Hurtbox" parent="." index="2"]
+collision_layer = 16
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_e2wm8")
+
+[node name="Area2D" parent="." index="3"]
+collision_layer = 0
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_mfbgq")
+
+[node name="Stats" parent="." index="5"]
+base_health_points = 200.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

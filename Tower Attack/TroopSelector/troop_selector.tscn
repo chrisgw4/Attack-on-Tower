@@ -82,9 +82,10 @@ stretch_mode = 3
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer/SkeletonUpgrade"]
 custom_minimum_size = Vector2(70, 30)
-offset_left = 15.0
+layout_mode = 0
+offset_left = 3.0
 offset_top = 14.0
-offset_right = 85.0
+offset_right = 135.0
 offset_bottom = 44.0
 scale = Vector2(0.44, 0.44)
 mouse_filter = 2
@@ -92,7 +93,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/normal_font = ExtResource("10_cpvyu")
 bbcode_enabled = true
-text = "[center][img=30x25]res://Mana/blue_crystal_0003.png[/img]15"
+text = "[center][img=30x25]res://Mana/blue_crystal_0003.png[/img]110"
 
 [node name="VFlowContainer2" type="VFlowContainer" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer"]
 custom_minimum_size = Vector2(4.79213e-12, 75)
@@ -130,9 +131,9 @@ stretch_mode = 3
 [node name="RichTextLabel3" type="RichTextLabel" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer2/OrcUpgrade"]
 custom_minimum_size = Vector2(70, 30)
 layout_mode = 2
-offset_left = 15.0
+offset_left = 3.0
 offset_top = 14.0
-offset_right = 85.0
+offset_right = 135.0
 offset_bottom = 44.0
 scale = Vector2(0.44, 0.44)
 mouse_filter = 2
@@ -140,7 +141,8 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/normal_font = ExtResource("10_cpvyu")
 bbcode_enabled = true
-text = "[center][img=30x25]res://Mana/blue_crystal_0003.png[/img]15"
+text = "[center][img=30x25]res://Mana/blue_crystal_0003.png[/img]120"
+scroll_active = false
 
 [connection signal="pressed" from="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer/SkeletonButton" to="." method="_on_skeleton_button_pressed"]
 [connection signal="pressed" from="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer/SkeletonUpgrade" to="." method="_on_skeleton_upgrade_pressed"]

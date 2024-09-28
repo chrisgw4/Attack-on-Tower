@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://b0spk5txs8f0d"]
 
 [ext_resource type="PackedScene" uid="uid://dc61u3pfpbvcj" path="res://Towers/projectile.tscn" id="1_qrcpr"]
-[ext_resource type="Texture2D" uid="uid://cauoepnndxro" path="res://Characters(100x100)/Archer/Arrow(projectile)/Arrow02(32x32).png" id="2_5tpje"]
+[ext_resource type="Texture2D" uid="uid://cs6jlkxxx840d" path="res://Arrow(Projectile)/Arrow01(32x32).png" id="2_lfelj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t7cp8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_5tpje")
+"texture": ExtResource("2_lfelj")
 }],
 "loop": true,
 "name": &"default",
