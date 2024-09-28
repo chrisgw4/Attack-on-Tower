@@ -1,14 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdwgygfoa6ru2"]
+[gd_scene load_steps=14 format=3 uid="uid://cdwgygfoa6ru2"]
 
 [ext_resource type="Script" path="res://TroopSelector/troop_selector.gd" id="1_00xp4"]
 [ext_resource type="PackedScene" uid="uid://dju42hngi6bie" path="res://Troops/Skeleton.tscn" id="2_cdffr"]
 [ext_resource type="PackedScene" uid="uid://deisusy3i2ycg" path="res://Troops/Skeleton_2.tscn" id="3_7fevt"]
 [ext_resource type="Texture2D" uid="uid://3pq8k7yu0xq0" path="res://TroopIcons/Skeleton_Icon.png" id="3_pfjey"]
 [ext_resource type="Texture2D" uid="uid://b6yuaxxrl07lu" path="res://UpgradeButton/Upgrade.png" id="3_w3ykp"]
+[ext_resource type="PackedScene" uid="uid://b0r6dtm5t4rx0" path="res://Troops/Skeleton_3.tscn" id="4_cluwa"]
 [ext_resource type="Texture2D" uid="uid://cmuwerffibptn" path="res://UpgradeButton/Upgrade_Click.png" id="4_eyr53"]
+[ext_resource type="PackedScene" uid="uid://nj4mb0b2s7vf" path="res://Troops/Orc.tscn" id="4_fg3o6"]
 [ext_resource type="Texture2D" uid="uid://ck5y38v2tlunh" path="res://TroopIcons/Skeleton_Icon_Clicked.png" id="4_lcl87"]
+[ext_resource type="PackedScene" uid="uid://b1125v5h172u0" path="res://Troops/Orc_2.tscn" id="5_2n5jg"]
+[ext_resource type="PackedScene" uid="uid://cke4prko3d5dv" path="res://Troops/Orc_3.tscn" id="6_4mob3"]
+[ext_resource type="Texture2D" uid="uid://b2qx203cql8ia" path="res://TroopIcons/Orc_Icon.png" id="11_5d8vl"]
+[ext_resource type="Texture2D" uid="uid://ddv0b2x1p2ka4" path="res://TroopIcons/Orc_Icon_Clicked.png" id="12_opeaf"]
 
-[node name="TroopSelector" type="Container" node_paths=PackedStringArray("troop_container", "skeleton_button")]
+[node name="TroopSelector" type="Container" node_paths=PackedStringArray("troop_container", "skeleton_button", "orc_button")]
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -20,8 +26,10 @@ grow_vertical = 2
 size_flags_horizontal = 8
 script = ExtResource("1_00xp4")
 troop_container = NodePath("HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer")
-skeleton_scene = Array[PackedScene]([ExtResource("2_cdffr"), ExtResource("3_7fevt")])
+skeleton_scene = Array[PackedScene]([ExtResource("2_cdffr"), ExtResource("3_7fevt"), ExtResource("4_cluwa")])
+orc_scene = Array[PackedScene]([ExtResource("4_fg3o6"), ExtResource("5_2n5jg"), ExtResource("6_4mob3")])
 skeleton_button = NodePath("HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer/SkeletonButton")
+orc_button = NodePath("HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer2/OrcButton")
 
 [node name="HFlowContainer" type="HFlowContainer" parent="."]
 custom_minimum_size = Vector2(700, 4.79213e-12)
@@ -56,5 +64,25 @@ texture_normal = ExtResource("3_w3ykp")
 texture_pressed = ExtResource("4_eyr53")
 stretch_mode = 3
 
+[node name="VFlowContainer2" type="VFlowContainer" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer"]
+custom_minimum_size = Vector2(4.79213e-12, 75)
+layout_mode = 2
+theme_override_constants/v_separation = -8
+
+[node name="OrcButton" type="TextureButton" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer2"]
+custom_minimum_size = Vector2(4.79213e-12, 50)
+layout_mode = 2
+texture_normal = ExtResource("11_5d8vl")
+texture_pressed = ExtResource("12_opeaf")
+stretch_mode = 5
+
+[node name="OrcUpgrade" type="TextureButton" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("3_w3ykp")
+texture_pressed = ExtResource("4_eyr53")
+stretch_mode = 3
+
 [connection signal="pressed" from="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer/SkeletonButton" to="." method="_on_skeleton_button_pressed"]
 [connection signal="pressed" from="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer/SkeletonUpgrade" to="." method="_on_skeleton_upgrade_pressed"]
+[connection signal="pressed" from="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer2/OrcButton" to="." method="_on_orc_button_pressed"]
+[connection signal="pressed" from="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer2/OrcUpgrade" to="." method="_on_orc_upgrade_pressed"]

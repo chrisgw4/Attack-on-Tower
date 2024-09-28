@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b37gftw1d4me8"
-path="res://.godot/imported/Skeleton_Icon 2.png-c3b1f19bf6beac48e77ef1e113695efc.ctex"
+uid="uid://cwo0hyywf0hve"
+path="res://.godot/imported/Orc2_Icon_Clicked.png-cd79dcac3e038fa2dca06eb117af197d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TroopIcons/Skeleton_Icon 2.png"
-dest_files=["res://.godot/imported/Skeleton_Icon 2.png-c3b1f19bf6beac48e77ef1e113695efc.ctex"]
+source_file="res://TroopIcons/Orc2_Icon_Clicked.png"
+dest_files=["res://.godot/imported/Orc2_Icon_Clicked.png-cd79dcac3e038fa2dca06eb117af197d.ctex"]
 
 [params]
 
