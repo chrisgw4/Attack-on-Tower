@@ -1,6 +1,6 @@
-[gd_scene load_steps=57 format=3 uid="uid://b1125v5h172u0"]
+[gd_scene load_steps=59 format=3 uid="uid://wohn2uqrgm1r"]
 
-[ext_resource type="PackedScene" uid="uid://crjvw1jr1m1kr" path="res://troop.tscn" id="1_vccyh"]
+[ext_resource type="PackedScene" uid="uid://crjvw1jr1m1kr" path="res://Troops/troop.tscn" id="1_vccyh"]
 [ext_resource type="Texture2D" uid="uid://dlfm0fpueuf4l" path="res://Characters(100x100)/Armored Orc/Armored Orc with shadows/Armored Orc-Attack01.png" id="2_smvhh"]
 [ext_resource type="Texture2D" uid="uid://b6b40yac5yq0b" path="res://Characters(100x100)/Armored Orc/Armored Orc with shadows/Armored Orc-Walk.png" id="2_w57g8"]
 [ext_resource type="Texture2D" uid="uid://ox3lgist0ljs" path="res://Characters(100x100)/Armored Orc/Armored Orc with shadows/Armored Orc-Attack02.png" id="3_uxwsf"]
@@ -321,35 +321,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_7p7wj"]
-resource_name = "walk"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"walk"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
-
 [sub_resource type="Animation" id="Animation_p53qg"]
 length = 0.001
 tracks/0/type = "value"
@@ -375,6 +346,34 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_6v6so"]
+resource_name = "attack"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
 }
 
 [sub_resource type="Animation" id="Animation_nlatd"]
@@ -461,9 +460,10 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_6v6so"]
-resource_name = "attack"
-length = 0.7
+[sub_resource type="Animation" id="Animation_7p7wj"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -474,7 +474,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"attack"]
+"values": [&"walk"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -483,10 +483,38 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_2w7qk"]
+resource_name = "death"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"death"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6jcjs"]
@@ -496,10 +524,14 @@ _data = {
 "attack2": SubResource("Animation_nlatd"),
 "attack3": SubResource("Animation_t6hki"),
 "block": SubResource("Animation_1nbqn"),
+"death": SubResource("Animation_2w7qk"),
 "walk": SubResource("Animation_7p7wj")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_46c4y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_geect"]
+radius = 6.0
 
 [node name="Orc2" instance=ExtResource("1_vccyh")]
 
@@ -514,3 +546,19 @@ libraries = {
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 shape = SubResource("CircleShape2D_46c4y")
+
+[node name="Stats" parent="." index="4"]
+base_health_points = 12.0
+base_speed = 15.0
+base_attack_damage = 2.5
+
+[node name="MovementComponent" parent="." index="5" node_paths=PackedStringArray("character_body", "animation_player", "animated_sprite")]
+character_body = NodePath("..")
+animation_player = NodePath("../AnimationPlayer")
+animated_sprite = NodePath("../AnimatedSprite2D")
+
+[node name="AttackComponent" parent="." index="7" node_paths=PackedStringArray("animation_player")]
+animation_player = NodePath("../AnimationPlayer")
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_geect")

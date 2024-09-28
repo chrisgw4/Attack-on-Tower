@@ -382,13 +382,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_n62mw"]
 radius = 6.0
 
-[node name="Skeleton" node_paths=PackedStringArray("health_component", "move_component", "animation_player") instance=ExtResource("1_cvqu6")]
-health_component = NodePath("HealthComponent")
-move_component = NodePath("MovementComponent")
-animation_player = NodePath("AnimationPlayer")
+[node name="Skeleton" instance=ExtResource("1_cvqu6")]
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-modulate = Color(1, 1, 1, 1)
 sprite_frames = SubResource("SpriteFrames_s16qa")
 animation = &"walk"
 

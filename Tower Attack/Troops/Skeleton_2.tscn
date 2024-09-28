@@ -398,10 +398,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_f4at7"]
 radius = 6.0
 
-[node name="Skeleton2" node_paths=PackedStringArray("health_component", "move_component", "animation_player") instance=ExtResource("1_3x754")]
-health_component = NodePath("HealthComponent")
-move_component = NodePath("MovementComponent")
-animation_player = NodePath("AnimationPlayer")
+[node name="Skeleton2" instance=ExtResource("1_3x754")]
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_3co3r")
@@ -417,7 +414,7 @@ shape = SubResource("CircleShape2D_a7yqk")
 
 [node name="Stats" parent="." index="4"]
 base_health_points = 8.0
-base_speed = 30.0
+base_speed = 22.0
 base_attack_damage = 1.0
 
 [node name="MovementComponent" parent="." index="5" node_paths=PackedStringArray("character_body", "animation_player", "animated_sprite")]

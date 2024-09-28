@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://b0r6dtm5t4rx0"]
+[gd_scene load_steps=59 format=3 uid="uid://b0r6dtm5t4rx0"]
 
 [ext_resource type="PackedScene" uid="uid://crjvw1jr1m1kr" path="res://Troops/troop.tscn" id="1_4p13a"]
 [ext_resource type="Texture2D" uid="uid://dtpu7vnibxv83" path="res://Characters(100x100)/Greatsword Skeleton/Greatsword Skeleton with shadows/Greatsword Skeleton-Walk.png" id="2_3gqx6"]
@@ -329,35 +329,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_m4jei"]
-resource_name = "walk"
-length = 0.9
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"walk"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
-}
-
 [sub_resource type="Animation" id="Animation_a1pw1"]
 length = 0.001
 tracks/0/type = "value"
@@ -485,6 +456,35 @@ tracks/1/keys = {
 "values": [&"death"]
 }
 
+[sub_resource type="Animation" id="Animation_m4jei"]
+resource_name = "walk"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_62dcj"]
 _data = {
 "RESET": SubResource("Animation_a1pw1"),
@@ -496,6 +496,9 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p6wp6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qo654"]
+radius = 6.0
 
 [node name="Skeleton3" instance=ExtResource("1_4p13a")]
 
@@ -511,3 +514,19 @@ libraries = {
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 shape = SubResource("CircleShape2D_p6wp6")
+
+[node name="Stats" parent="." index="4"]
+base_health_points = 9.0
+base_speed = 22.0
+base_attack_damage = 1.5
+
+[node name="MovementComponent" parent="." index="5" node_paths=PackedStringArray("character_body", "animation_player", "animated_sprite")]
+character_body = NodePath("..")
+animation_player = NodePath("../AnimationPlayer")
+animated_sprite = NodePath("../AnimatedSprite2D")
+
+[node name="AttackComponent" parent="." index="7" node_paths=PackedStringArray("animation_player")]
+animation_player = NodePath("../AnimationPlayer")
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_qo654")

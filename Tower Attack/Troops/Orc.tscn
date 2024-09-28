@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://nj4mb0b2s7vf"]
+[gd_scene load_steps=40 format=3 uid="uid://nj4mb0b2s7vf"]
 
 [ext_resource type="PackedScene" uid="uid://crjvw1jr1m1kr" path="res://Troops/troop.tscn" id="1_xh2pl"]
 [ext_resource type="Texture2D" uid="uid://ds4yoipnnk18p" path="res://Characters(100x100)/Orc/Orc with shadows/Orc-Attack01.png" id="2_bl1bn"]
@@ -351,6 +351,9 @@ radius = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2tisl"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_erxof"]
+radius = 6.0
+
 [node name="Orc" instance=ExtResource("1_xh2pl")]
 
 [node name="AnimatedSprite2D" parent="." index="0"]
@@ -367,3 +370,19 @@ shape = SubResource("CircleShape2D_c8vny")
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 shape = SubResource("CircleShape2D_2tisl")
+
+[node name="Stats" parent="." index="4"]
+base_health_points = 8.0
+base_speed = 15.0
+base_attack_damage = 2.0
+
+[node name="MovementComponent" parent="." index="5" node_paths=PackedStringArray("character_body", "animation_player", "animated_sprite")]
+character_body = NodePath("..")
+animation_player = NodePath("../AnimationPlayer")
+animated_sprite = NodePath("../AnimatedSprite2D")
+
+[node name="AttackComponent" parent="." index="7" node_paths=PackedStringArray("animation_player")]
+animation_player = NodePath("../AnimationPlayer")
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_erxof")
