@@ -26,6 +26,8 @@ func _on_attack_delay_timeout() -> void:
 			animated_sprite.flip_h = false
 		emit_signal("attack")
 		attack_target = array[0]
+	else:
+		attack_target = null
 
 func shoot_projectile() -> void:
 	var temp:Projectile = projectile.instantiate()

@@ -19,7 +19,7 @@ animations = [{
 [node name="Arrow" instance=ExtResource("1_qrcpr")]
 
 [node name="Stats" parent="." index="0"]
-base_speed = 30.0
+base_speed = 80.0
 
 [node name="MovementComponent" parent="." index="1"]
 accel = 1000.0

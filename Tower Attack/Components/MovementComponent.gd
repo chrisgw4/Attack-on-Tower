@@ -8,6 +8,8 @@ var speed:float = 0
 @export var animation_player:AnimationPlayer
 @export var animated_sprite:AnimatedSprite2D
 
+var is_dead:bool = false
+
 
 var vel:Vector2 = Vector2.ZERO:
 	set(new_val):
@@ -36,6 +38,8 @@ func accelerate_in_direction(new_pos:Vector2) -> void:
 
 
 func move() -> void:
+	if is_dead:
+		return
 	if vel == Vector2.ZERO:
 		return
 	if animation_player:

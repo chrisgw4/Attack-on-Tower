@@ -7,3 +7,4 @@ class_name Hurtbox
 
 func take_damage(damage:float) -> void:
 	health_component.damage(damage)
+	print("damage")

@@ -10,3 +10,4 @@ class_name Hitbox
 func _on_area_entered(area: Area2D) -> void:
 	if area is Hurtbox:
 		area.take_damage(attack_component.damage)
+		get_parent().queue_free()
