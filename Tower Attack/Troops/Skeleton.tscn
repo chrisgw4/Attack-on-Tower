@@ -353,10 +353,10 @@ _data = {
 "walk": SubResource("Animation_pwqfg")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jlc4g"]
-radius = 1.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_tcdqu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n62mw"]
+radius = 7.0
 
 [node name="Skeleton" instance=ExtResource("1_cvqu6")]
 
@@ -371,7 +371,6 @@ libraries = {
 
 [node name="CollisionShape2D" parent="." index="2"]
 scale = Vector2(0.25, 0.25)
-shape = SubResource("CircleShape2D_jlc4g")
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 shape = SubResource("CircleShape2D_tcdqu")
@@ -388,3 +387,6 @@ animated_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="AttackComponent" parent="." index="7" node_paths=PackedStringArray("animation_player")]
 animation_player = NodePath("../AnimationPlayer")
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_n62mw")

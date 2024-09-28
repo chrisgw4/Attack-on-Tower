@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0spk5txs8f0d"]
+
+[ext_resource type="PackedScene" uid="uid://dc61u3pfpbvcj" path="res://Towers/projectile.tscn" id="1_qrcpr"]
+[ext_resource type="Texture2D" uid="uid://cauoepnndxro" path="res://Characters(100x100)/Archer/Arrow(projectile)/Arrow02(32x32).png" id="2_5tpje"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t7cp8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5tpje")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ym1m2"]
+
+[node name="Arrow" instance=ExtResource("1_qrcpr")]
+
+[node name="Stats" parent="." index="0"]
+base_speed = 30.0
+
+[node name="MovementComponent" parent="." index="1"]
+accel = 1000.0
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_t7cp8")
+
+[node name="Hitbox" parent="." index="5" node_paths=PackedStringArray("attack_component", "collision_shape")]
+attack_component = NodePath("../AttackComponent")
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_ym1m2")

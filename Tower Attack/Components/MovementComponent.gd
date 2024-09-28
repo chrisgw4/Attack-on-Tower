@@ -8,6 +8,7 @@ var speed:float = 0
 @export var animation_player:AnimationPlayer
 @export var animated_sprite:AnimatedSprite2D
 
+
 var vel:Vector2 = Vector2.ZERO:
 	set(new_val):
 		
@@ -26,17 +27,24 @@ func _physics_process(delta: float) -> void:
 
 
 func set_velocity(velocity:Vector2) -> void:
-	vel = (velocity*speed).limit_length(speed)
+	vel = (velocity*speed)
+	print(vel)
+	print(speed, " Speed")
 
 func accelerate_in_direction(new_pos:Vector2) -> void:
 	vel += character_body.global_position.direction_to(new_pos) * accel * get_physics_process_delta_time()
 
 
 func move() -> void:
-	animation_player.play("walk")
+	if vel == Vector2.ZERO:
+		return
+	if animation_player:
+		animation_player.play("walk")
 	character_body.velocity = vel.limit_length(speed)
 	character_body.move_and_slide()
 	#decelerate(delta)
 
 func decelerate(delta:float) -> void:
-	vel = vel.lerp(Vector2.ZERO, 0.015*delta)
+	vel.x = lerpf(vel.x, 0, 15*delta)
+	vel.y = lerpf(vel.y, 0, 15*delta)
+	#vel = vel.lerp(Vector2.ZERO, 15*delta)

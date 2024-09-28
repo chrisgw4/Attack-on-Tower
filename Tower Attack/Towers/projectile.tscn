@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dc61u3pfpbvcj"]
+
+[ext_resource type="Script" path="res://Towers/projectile.gd" id="1_7q75o"]
+[ext_resource type="PackedScene" uid="uid://ch6crlanccoyo" path="res://Components/stats.tscn" id="1_ks6n4"]
+[ext_resource type="PackedScene" uid="uid://c5ky47hdh6a4l" path="res://Components/movement_component.tscn" id="2_1p7hq"]
+[ext_resource type="PackedScene" uid="uid://61d3tkp5d5ug" path="res://Components/attack_component.tscn" id="3_ama6m"]
+[ext_resource type="PackedScene" uid="uid://cag3p1foah62y" path="res://HurtHitBox/hitbox.tscn" id="4_cpely"]
+
+[node name="Projectile" type="CharacterBody2D" node_paths=PackedStringArray("move_component", "stats", "animated_sprite")]
+script = ExtResource("1_7q75o")
+move_component = NodePath("MovementComponent")
+stats = NodePath("Stats")
+animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="Stats" parent="." node_paths=PackedStringArray("movement_component", "attack_component") instance=ExtResource("1_ks6n4")]
+base_speed = 20.0
+base_attack_damage = 2.0
+movement_component = NodePath("../MovementComponent")
+attack_component = NodePath("../AttackComponent")
+
+[node name="MovementComponent" parent="." node_paths=PackedStringArray("character_body", "animated_sprite") instance=ExtResource("2_1p7hq")]
+character_body = NodePath("..")
+animated_sprite = NodePath("../AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="AttackComponent" parent="." instance=ExtResource("3_ama6m")]
+
+[node name="Hitbox" parent="." instance=ExtResource("4_cpely")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]

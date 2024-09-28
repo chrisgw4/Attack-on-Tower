@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://cua2xojn1tjnw"]
+
+[ext_resource type="PackedScene" uid="uid://ch6crlanccoyo" path="res://Components/stats.tscn" id="1_h2o2n"]
+[ext_resource type="Script" path="res://Towers/tower.gd" id="1_piuwl"]
+[ext_resource type="PackedScene" uid="uid://61d3tkp5d5ug" path="res://Components/attack_component.tscn" id="2_srt7l"]
+
+[node name="Tower" type="Node2D" node_paths=PackedStringArray("animation_player", "animated_sprite", "area_range", "attack_component")]
+script = ExtResource("1_piuwl")
+animation_player = NodePath("AnimationPlayer")
+animated_sprite = NodePath("AnimatedSprite2D")
+area_range = NodePath("Area2D")
+attack_component = NodePath("AttackComponent")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="Stats" parent="." node_paths=PackedStringArray("attack_component") instance=ExtResource("1_h2o2n")]
+base_attack_damage = 4.0
+attack_component = NodePath("../AttackComponent")
+
+[node name="AttackComponent" parent="." node_paths=PackedStringArray("animation_player") instance=ExtResource("2_srt7l")]
+animation_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[node name="AttackDelay" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="AttackDelay" to="." method="_on_attack_delay_timeout"]
