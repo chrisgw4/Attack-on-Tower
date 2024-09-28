@@ -7,8 +7,8 @@ extends Node2D
 @export var start_direction:Vector2i = Vector2i.ZERO
 
 @export var troop_selector:TroopSelector
-@export var troops:Node2D
 @export var tile_map:TileMap
+@export var mana:Mana
 
 func _ready() -> void:
 	troop_selector.connect("spawn_troop", _spawn_troop_in_game)
@@ -19,4 +19,9 @@ func _spawn_troop_in_game(troop, stats_upgrade) -> void:
 	troop.stats.start_velocity = start_direction
 	troop.stats.update_stats(stats_upgrade)
 	tile_map.add_child(troop)
+	troop.connect("death_time", _mana_increase )
+	
+func _mana_increase(troop) -> void:
+	mana.mana += troop.time_alive *0.5
+	print(mana.mana)
 	

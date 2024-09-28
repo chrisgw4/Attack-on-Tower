@@ -8,6 +8,8 @@ extends CharacterBody2D
 
 @export var attack_delay:Timer 
 
+var time_alive:float = 0
+signal death_time(troop)
 signal attack
 
 var check_left:bool = false
@@ -31,6 +33,7 @@ func _hurt_flash() -> void:
 	hurt_animation.play("flash")
 
 func _clean_up_death() -> void:
+	emit_signal("death_time", self)
 	hurt_animation.play("flash")
 	hurtbox.collision_shape.set_deferred("disabled", true)
 	hurtbox.queue_free()
@@ -49,6 +52,9 @@ func _physics_process(delta: float) -> void:
 		pos_to_check = Vector2.ZERO
 		attack_delay.start()
 		start_attacking = false
+	if health_component.current_hp >0:
+		time_alive += delta
+	
 		
 		
 		
@@ -81,5 +87,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_attack_delay_timeout() -> void:
 	#emit_signal("attack")
+	if health_component.current_hp <=0:
+		return
 	attack_delay.start()
 	stats.attack_component.attack()

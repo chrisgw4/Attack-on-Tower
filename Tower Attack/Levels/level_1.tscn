@@ -1,18 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://5mhg2igqgnsk"]
+[gd_scene load_steps=6 format=3 uid="uid://5mhg2igqgnsk"]
 
 [ext_resource type="PackedScene" uid="uid://dg6kjmhgqhrvv" path="res://Levels/level.tscn" id="1_gi2q7"]
-[ext_resource type="PackedScene" uid="uid://cdwgygfoa6ru2" path="res://TroopSelector/troop_selector.tscn" id="2_l3yyx"]
 [ext_resource type="PackedScene" uid="uid://bxp6205fmw4y6" path="res://Levels/turn_points.tscn" id="3_rufom"]
 [ext_resource type="PackedScene" uid="uid://y13i7rogldx0" path="res://Towers/archer_tower.tscn" id="4_600cj"]
 [ext_resource type="PackedScene" uid="uid://dyc8nc6dshkdk" path="res://Towers/castle.tscn" id="5_4jmb1"]
 [ext_resource type="PackedScene" uid="uid://bwjqfjogic5s2" path="res://Towers/wizzard_tower.tscn" id="6_7mcay"]
 
-[node name="Level1" node_paths=PackedStringArray("spawn_node", "troop_selector", "troops", "tile_map") instance=ExtResource("1_gi2q7")]
-spawn_node = NodePath("SpawnPoint")
+[node name="Level1" instance=ExtResource("1_gi2q7")]
 start_direction = Vector2i(1, 0)
-troop_selector = NodePath("TroopSelector")
-troops = NodePath("Troops")
-tile_map = NodePath("TileMap")
 
 [node name="TileMap" parent="." index="0"]
 y_sort_enabled = true
@@ -23,77 +18,71 @@ layer_1/tile_data = PackedInt32Array(393222, 1179649, 19, 458758, 1179649, 20, 5
 [node name="SpawnPoint" parent="." index="1"]
 position = Vector2(16, 95)
 
-[node name="TroopSelector" parent="." index="2" instance=ExtResource("2_l3yyx")]
-offset_left = 476.0
-offset_top = 1.0
-offset_right = 887.0
-offset_bottom = 1.0
-
-[node name="TurnPoints" parent="." index="4" instance=ExtResource("3_rufom")]
+[node name="TurnPoints" parent="." index="3" instance=ExtResource("3_rufom")]
 position = Vector2(144, 96)
 collision_layer = 0
 new_direction = Vector2i(0, 1)
 check_right = true
 
-[node name="TurnPoints2" parent="." index="5" node_paths=PackedStringArray("collision_shape") instance=ExtResource("3_rufom")]
+[node name="TurnPoints2" parent="." index="4" node_paths=PackedStringArray("collision_shape") instance=ExtResource("3_rufom")]
 position = Vector2(144, 287)
 new_direction = Vector2i(1, 0)
 collision_shape = NodePath("../TurnPoints/CollisionShape2D")
 check_down = true
 
-[node name="TurnPoints3" parent="." index="6" node_paths=PackedStringArray("collision_shape") instance=ExtResource("3_rufom")]
+[node name="TurnPoints3" parent="." index="5" node_paths=PackedStringArray("collision_shape") instance=ExtResource("3_rufom")]
 position = Vector2(224, 287)
 new_direction = Vector2i(0, -1)
 collision_shape = NodePath("../TurnPoints/CollisionShape2D")
 check_right = true
 
-[node name="TurnPoints4" parent="." index="7" node_paths=PackedStringArray("collision_shape") instance=ExtResource("3_rufom")]
+[node name="TurnPoints4" parent="." index="6" node_paths=PackedStringArray("collision_shape") instance=ExtResource("3_rufom")]
 position = Vector2(224, 127)
 new_direction = Vector2i(1, 0)
 collision_shape = NodePath("../TurnPoints/CollisionShape2D")
 check_up = true
 
-[node name="TurnPoints5" parent="." index="8" node_paths=PackedStringArray("collision_shape") instance=ExtResource("3_rufom")]
+[node name="TurnPoints5" parent="." index="7" node_paths=PackedStringArray("collision_shape") instance=ExtResource("3_rufom")]
 position = Vector2(288, 127)
 new_direction = Vector2i(0, 1)
 collision_shape = NodePath("../TurnPoints/CollisionShape2D")
 check_right = true
 
-[node name="TurnPoints6" parent="." index="9" node_paths=PackedStringArray("collision_shape") instance=ExtResource("3_rufom")]
+[node name="TurnPoints6" parent="." index="8" node_paths=PackedStringArray("collision_shape") instance=ExtResource("3_rufom")]
 position = Vector2(288, 319)
 new_direction = Vector2i(1, 0)
 collision_shape = NodePath("../TurnPoints/CollisionShape2D")
 check_down = true
 
-[node name="TurnPoints7" parent="." index="10" node_paths=PackedStringArray("collision_shape") instance=ExtResource("3_rufom")]
+[node name="TurnPoints7" parent="." index="9" node_paths=PackedStringArray("collision_shape") instance=ExtResource("3_rufom")]
 position = Vector2(384, 319)
 new_direction = Vector2i(0, -1)
 collision_shape = NodePath("../TurnPoints/CollisionShape2D")
 check_right = true
 
-[node name="TurnPoints8" parent="." index="11" node_paths=PackedStringArray("collision_shape") instance=ExtResource("3_rufom")]
+[node name="TurnPoints8" parent="." index="10" node_paths=PackedStringArray("collision_shape") instance=ExtResource("3_rufom")]
 position = Vector2(384, 175)
 new_direction = Vector2i(1, 0)
 collision_shape = NodePath("../TurnPoints/CollisionShape2D")
 check_up = true
 
-[node name="ArcherTower" parent="." index="12" instance=ExtResource("4_600cj")]
+[node name="ArcherTower" parent="." index="11" instance=ExtResource("4_600cj")]
 position = Vector2(112, 105)
 
-[node name="ArcherTower2" parent="." index="13" instance=ExtResource("4_600cj")]
+[node name="ArcherTower2" parent="." index="12" instance=ExtResource("4_600cj")]
 position = Vector2(175, 185)
 
-[node name="ArcherTower3" parent="." index="14" instance=ExtResource("4_600cj")]
+[node name="ArcherTower3" parent="." index="13" instance=ExtResource("4_600cj")]
 position = Vector2(192, 234)
 
-[node name="Castle" parent="." index="15" instance=ExtResource("5_4jmb1")]
+[node name="Castle" parent="." index="14" instance=ExtResource("5_4jmb1")]
 position = Vector2(480, 141)
 
-[node name="WizzardTower" parent="." index="16" instance=ExtResource("6_7mcay")]
+[node name="WizzardTower" parent="." index="15" instance=ExtResource("6_7mcay")]
 position = Vector2(256, 137)
 
-[node name="ArcherTower4" parent="." index="17" instance=ExtResource("4_600cj")]
+[node name="ArcherTower4" parent="." index="16" instance=ExtResource("4_600cj")]
 position = Vector2(416, 185)
 
-[node name="WizzardTower2" parent="." index="18" instance=ExtResource("6_7mcay")]
+[node name="WizzardTower2" parent="." index="17" instance=ExtResource("6_7mcay")]
 position = Vector2(416, 122)

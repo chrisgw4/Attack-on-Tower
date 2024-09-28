@@ -1,0 +1,12 @@
+res://mana.tscn
+res://Levels/level.tscn
+res://Troops/Orc_2.tscn
+res://Troops/Orc.tscn
+res://Troops/Skeleton_2.tscn
+res://Troops/Skeleton_3.tscn
+res://Levels/level_1.tscn
+res://Levels/level.gd
+res://Mana.gd
+res://Troops/troop.tscn
+res://Troops/Troop.gd
+res://TroopSelector/troop_selector.tscn

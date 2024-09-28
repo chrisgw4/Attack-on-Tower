@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cdwgygfoa6ru2"]
+[gd_scene load_steps=15 format=3 uid="uid://cdwgygfoa6ru2"]
 
 [ext_resource type="Script" path="res://TroopSelector/troop_selector.gd" id="1_00xp4"]
 [ext_resource type="PackedScene" uid="uid://dju42hngi6bie" path="res://Troops/Skeleton.tscn" id="2_cdffr"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ck5y38v2tlunh" path="res://TroopIcons/Skeleton_Icon_Clicked.png" id="4_lcl87"]
 [ext_resource type="PackedScene" uid="uid://wohn2uqrgm1r" path="res://Troops/Orc_2.tscn" id="5_2n5jg"]
 [ext_resource type="PackedScene" uid="uid://cke4prko3d5dv" path="res://Troops/Orc_3.tscn" id="6_4mob3"]
+[ext_resource type="FontFile" uid="uid://bsqyetpr5ufu8" path="res://Fonts/joystix monospace.otf" id="10_cpvyu"]
 [ext_resource type="Texture2D" uid="uid://b2qx203cql8ia" path="res://TroopIcons/Orc_Icon.png" id="11_5d8vl"]
 [ext_resource type="Texture2D" uid="uid://ddv0b2x1p2ka4" path="res://TroopIcons/Orc_Icon_Clicked.png" id="12_opeaf"]
 
@@ -58,11 +59,40 @@ texture_normal = ExtResource("3_pfjey")
 texture_pressed = ExtResource("4_lcl87")
 stretch_mode = 5
 
+[node name="RichTextLabel" type="RichTextLabel" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer/SkeletonButton"]
+custom_minimum_size = Vector2(70, 30)
+layout_mode = 2
+offset_left = 16.0
+offset_top = 2.0
+offset_right = 86.0
+offset_bottom = 32.0
+scale = Vector2(0.44, 0.44)
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("10_cpvyu")
+bbcode_enabled = true
+text = "[center][img=30x25]res://Mana/blue_crystal_0003.png[/img]10"
+
 [node name="SkeletonUpgrade" type="TextureButton" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer"]
 layout_mode = 2
 texture_normal = ExtResource("3_w3ykp")
 texture_pressed = ExtResource("4_eyr53")
 stretch_mode = 3
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer/SkeletonUpgrade"]
+custom_minimum_size = Vector2(70, 30)
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 85.0
+offset_bottom = 44.0
+scale = Vector2(0.44, 0.44)
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/normal_font = ExtResource("10_cpvyu")
+bbcode_enabled = true
+text = "[center][img=30x25]res://Mana/blue_crystal_0003.png[/img]15"
 
 [node name="VFlowContainer2" type="VFlowContainer" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer"]
 custom_minimum_size = Vector2(4.79213e-12, 75)
@@ -76,11 +106,41 @@ texture_normal = ExtResource("11_5d8vl")
 texture_pressed = ExtResource("12_opeaf")
 stretch_mode = 5
 
+[node name="RichTextLabel2" type="RichTextLabel" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer2/OrcButton"]
+custom_minimum_size = Vector2(70, 30)
+layout_mode = 2
+offset_left = 16.0
+offset_top = 2.0
+offset_right = 86.0
+offset_bottom = 32.0
+scale = Vector2(0.44, 0.44)
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("10_cpvyu")
+bbcode_enabled = true
+text = "[center][img=30x25]res://Mana/blue_crystal_0003.png[/img]15"
+
 [node name="OrcUpgrade" type="TextureButton" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer2"]
 layout_mode = 2
 texture_normal = ExtResource("3_w3ykp")
 texture_pressed = ExtResource("4_eyr53")
 stretch_mode = 3
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer2/OrcUpgrade"]
+custom_minimum_size = Vector2(70, 30)
+layout_mode = 2
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 85.0
+offset_bottom = 44.0
+scale = Vector2(0.44, 0.44)
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/normal_font = ExtResource("10_cpvyu")
+bbcode_enabled = true
+text = "[center][img=30x25]res://Mana/blue_crystal_0003.png[/img]15"
 
 [connection signal="pressed" from="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer/SkeletonButton" to="." method="_on_skeleton_button_pressed"]
 [connection signal="pressed" from="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer/SkeletonUpgrade" to="." method="_on_skeleton_upgrade_pressed"]
