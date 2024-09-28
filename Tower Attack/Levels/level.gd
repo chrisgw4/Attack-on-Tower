@@ -39,3 +39,5 @@ func _mana_increase(troop) -> void:
 	mana.mana += troop.time_alive *0.75
 	print(mana.mana)
 	
+
+
