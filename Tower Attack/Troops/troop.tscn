@@ -13,10 +13,11 @@ animations = []
 [sub_resource type="CircleShape2D" id="CircleShape2D_jlc4g"]
 radius = 2.0
 
-[node name="Troop" type="CharacterBody2D" node_paths=PackedStringArray("stats")]
+[node name="Troop" type="CharacterBody2D" node_paths=PackedStringArray("stats", "hurtbox")]
 collision_mask = 0
 script = ExtResource("1_tx33t")
 stats = NodePath("Stats")
+hurtbox = NodePath("Hurtbox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qj3ks")

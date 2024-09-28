@@ -77,3 +77,9 @@ check_up = true
 
 [node name="ArcherTower" parent="." index="12" instance=ExtResource("4_600cj")]
 position = Vector2(112, 105)
+
+[node name="ArcherTower2" parent="." index="13" instance=ExtResource("4_600cj")]
+position = Vector2(175, 185)
+
+[node name="ArcherTower3" parent="." index="14" instance=ExtResource("4_600cj")]
+position = Vector2(192, 234)

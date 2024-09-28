@@ -29,12 +29,12 @@ func _ready() -> void:
 func update_stats(stats_upgrade) -> void:
 	if health_component:
 		health_component.max_hp = base_health_points*stats_upgrade.health_increase
-		print(health_component.max_hp, " Health")
+		#print(health_component.max_hp, " Health")
 	if movement_component:
 		movement_component.speed = base_speed*stats_upgrade.move_speed_increase
 		movement_component.set_velocity(start_velocity)
-		print(movement_component.speed, " Speed")
+		#print(movement_component.speed, " Speed")
 	if attack_component:
 		attack_component.damage = base_attack_damage*stats_upgrade.damage_increase
-		print(attack_component.damage, " Damage")
+		#print(attack_component.damage, " Damage")
 	

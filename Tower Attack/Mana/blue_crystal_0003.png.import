@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwy73lkj5dgyh"
-path="res://.godot/imported/Skeleton2_Icon_Clicked.png-4600c814bcc76c62cc1c8ece5ab68511.ctex"
+uid="uid://bmwrypgy4h74a"
+path="res://.godot/imported/blue_crystal_0003.png-1b440479c0c2506d2b1be5e1e6ee2bf0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TroopIcons/Skeleton2_Icon_Clicked.png"
-dest_files=["res://.godot/imported/Skeleton2_Icon_Clicked.png-4600c814bcc76c62cc1c8ece5ab68511.ctex"]
+source_file="res://Mana/blue_crystal_0003.png"
+dest_files=["res://.godot/imported/blue_crystal_0003.png-1b440479c0c2506d2b1be5e1e6ee2bf0.ctex"]
 
 [params]
 

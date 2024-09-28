@@ -6,14 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://61d3tkp5d5ug" path="res://Components/attack_component.tscn" id="3_ama6m"]
 [ext_resource type="PackedScene" uid="uid://cag3p1foah62y" path="res://HurtHitBox/hitbox.tscn" id="4_cpely"]
 
-[node name="Projectile" type="CharacterBody2D" node_paths=PackedStringArray("move_component", "stats", "animated_sprite")]
+[node name="Projectile" type="CharacterBody2D" node_paths=PackedStringArray("move_component", "attack_component", "stats", "animated_sprite")]
 script = ExtResource("1_7q75o")
 move_component = NodePath("MovementComponent")
+attack_component = NodePath("AttackComponent")
 stats = NodePath("Stats")
 animated_sprite = NodePath("AnimatedSprite2D")
 
 [node name="Stats" parent="." node_paths=PackedStringArray("movement_component", "attack_component") instance=ExtResource("1_ks6n4")]
-base_speed = 20.0
+base_speed = 60.0
 base_attack_damage = 2.0
 movement_component = NodePath("../MovementComponent")
 attack_component = NodePath("../AttackComponent")
@@ -29,5 +30,6 @@ animated_sprite = NodePath("../AnimatedSprite2D")
 [node name="AttackComponent" parent="." instance=ExtResource("3_ama6m")]
 
 [node name="Hitbox" parent="." instance=ExtResource("4_cpely")]
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
