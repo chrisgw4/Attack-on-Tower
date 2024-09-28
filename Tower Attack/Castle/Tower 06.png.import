@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwy73lkj5dgyh"
-path="res://.godot/imported/Skeleton2_Icon_Clicked.png-4600c814bcc76c62cc1c8ece5ab68511.ctex"
+uid="uid://begttw88pdsyb"
+path="res://.godot/imported/Tower 06.png-81a819fd6ba8e071cf0c22bec204225f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TroopIcons/Skeleton2_Icon_Clicked.png"
-dest_files=["res://.godot/imported/Skeleton2_Icon_Clicked.png-4600c814bcc76c62cc1c8ece5ab68511.ctex"]
+source_file="res://Castle/Tower 06.png"
+dest_files=["res://.godot/imported/Tower 06.png-81a819fd6ba8e071cf0c22bec204225f.ctex"]
 
 [params]
 
