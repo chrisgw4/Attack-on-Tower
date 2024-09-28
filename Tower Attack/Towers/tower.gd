@@ -28,6 +28,7 @@ func _on_attack_delay_timeout() -> void:
 		attack_target = array[0]
 	else:
 		attack_target = null
+		animation_player.play("idle")
 
 func shoot_projectile() -> void:
 	var temp:Projectile = projectile.instantiate()

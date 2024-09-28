@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://crjvw1jr1m1kr"]
+[gd_scene load_steps=14 format=3 uid="uid://crjvw1jr1m1kr"]
 
 [ext_resource type="Script" path="res://Troops/Troop.gd" id="1_tx33t"]
 [ext_resource type="PackedScene" uid="uid://ch6crlanccoyo" path="res://Components/stats.tscn" id="2_kuxgo"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ds4ldaxrob63a" path="res://Components/health_component.tscn" id="4_n0xsb"]
 [ext_resource type="PackedScene" uid="uid://61d3tkp5d5ug" path="res://Components/attack_component.tscn" id="5_hc1qj"]
 [ext_resource type="PackedScene" uid="uid://hv5htjymkrih" path="res://HurtHitBox/hurtbox.tscn" id="6_w1fnk"]
+[ext_resource type="PackedScene" uid="uid://cag3p1foah62y" path="res://HurtHitBox/hitbox.tscn" id="7_ywtt5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qj3ks"]
 animations = []
@@ -13,11 +14,53 @@ animations = []
 [sub_resource type="CircleShape2D" id="CircleShape2D_jlc4g"]
 radius = 2.0
 
-[node name="Troop" type="CharacterBody2D" node_paths=PackedStringArray("stats", "hurtbox")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_l28kg"]
+radius = 34.0
+
+[sub_resource type="Animation" id="Animation_ixhvt"]
+resource_name = "flash"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0.156863, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_egita"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jrxoc"]
+_data = {
+"RESET": SubResource("Animation_egita"),
+"flash": SubResource("Animation_ixhvt")
+}
+
+[node name="Troop" type="CharacterBody2D" node_paths=PackedStringArray("stats", "hurtbox", "attack_delay", "hurt_animation")]
 collision_mask = 0
 script = ExtResource("1_tx33t")
 stats = NodePath("Stats")
 hurtbox = NodePath("Hurtbox")
+attack_delay = NodePath("AttackDelay")
+hurt_animation = NodePath("HurtFlash")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qj3ks")
@@ -52,3 +95,22 @@ collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 debug_color = Color(0.188235, 0.635294, 0.294118, 0.419608)
+
+[node name="AttackDelay" type="Timer" parent="."]
+wait_time = 0.8
+
+[node name="Hitbox" parent="." node_paths=PackedStringArray("attack_component", "collision_shape") instance=ExtResource("7_ywtt5")]
+collision_mask = 16
+attack_component = NodePath("../AttackComponent")
+collision_shape = NodePath("CollisionShape2D")
+max_num_enemies_hit = 100000000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_l28kg")
+
+[node name="HurtFlash" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jrxoc")
+}
+
+[connection signal="timeout" from="AttackDelay" to="." method="_on_attack_delay_timeout"]

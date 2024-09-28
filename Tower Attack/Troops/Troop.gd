@@ -6,6 +6,10 @@ extends CharacterBody2D
 @export var animation_player:AnimationPlayer
 @export var hurtbox:Hurtbox
 
+@export var attack_delay:Timer 
+
+signal attack
+
 var check_left:bool = false
 var check_right:bool = false
 var check_down:bool = false
@@ -14,11 +18,20 @@ var check_up:bool = false
 var pos_to_check:Vector2 = Vector2.ZERO
 var new_direction:Vector2
 
+var start_attacking:bool = false
+
+@export var hurt_animation:AnimationPlayer
+
 func _ready() -> void:
 	health_component.connect("died", _clean_up_death)
+	health_component.connect("hurt", _hurt_flash)
+	connect("attack", stats.attack_component.attack)
+
+func _hurt_flash() -> void:
+	hurt_animation.play("flash")
 
 func _clean_up_death() -> void:
-	print('died')
+	hurt_animation.play("flash")
 	hurtbox.collision_shape.set_deferred("disabled", true)
 	hurtbox.queue_free()
 	move_component.vel = Vector2.ZERO
@@ -32,6 +45,14 @@ func _clean_up_death() -> void:
 	queue_free()
 
 func _physics_process(delta: float) -> void:
+	if start_attacking:
+		pos_to_check = Vector2.ZERO
+		attack_delay.start()
+		start_attacking = false
+		
+		
+		
+	
 	if pos_to_check == Vector2.ZERO:
 		return
 	if check_left:
@@ -40,7 +61,6 @@ func _physics_process(delta: float) -> void:
 			check_left = false
 			stats.movement_component.set_velocity(new_direction)
 	if check_right:
-		print("check right")
 		if global_position.x > pos_to_check.x:
 			global_position = pos_to_check
 			check_right = false
@@ -57,3 +77,9 @@ func _physics_process(delta: float) -> void:
 			stats.movement_component.set_velocity(new_direction)
 
 
+
+
+func _on_attack_delay_timeout() -> void:
+	#emit_signal("attack")
+	attack_delay.start()
+	stats.attack_component.attack()

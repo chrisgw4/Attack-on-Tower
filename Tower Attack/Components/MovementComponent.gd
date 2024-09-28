@@ -9,6 +9,7 @@ var speed:float = 0
 @export var animated_sprite:AnimatedSprite2D
 
 var is_dead:bool = false
+var stop_moving:bool = false
 
 
 var vel:Vector2 = Vector2.ZERO:
@@ -30,15 +31,13 @@ func _physics_process(delta: float) -> void:
 
 func set_velocity(velocity:Vector2) -> void:
 	vel = (velocity*speed)
-	print(vel)
-	print(speed, " Speed")
 
 func accelerate_in_direction(new_pos:Vector2) -> void:
 	vel += character_body.global_position.direction_to(new_pos) * accel * get_physics_process_delta_time()
 
 
 func move() -> void:
-	if is_dead:
+	if is_dead or stop_moving:
 		return
 	if vel == Vector2.ZERO:
 		return

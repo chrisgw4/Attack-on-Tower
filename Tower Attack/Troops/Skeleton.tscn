@@ -230,6 +230,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [&"walk"]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_dvgbk"]
 resource_name = "attack"
@@ -257,6 +269,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"attack"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_jw63y"]
@@ -356,7 +380,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_tcdqu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n62mw"]
-radius = 7.0
+radius = 6.0
 
 [node name="Skeleton" node_paths=PackedStringArray("health_component", "move_component", "animation_player") instance=ExtResource("1_cvqu6")]
 health_component = NodePath("HealthComponent")
@@ -364,6 +388,7 @@ move_component = NodePath("MovementComponent")
 animation_player = NodePath("AnimationPlayer")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
+modulate = Color(1, 1, 1, 1)
 sprite_frames = SubResource("SpriteFrames_s16qa")
 animation = &"walk"
 
@@ -393,3 +418,6 @@ animation_player = NodePath("../AnimationPlayer")
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_n62mw")
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+disabled = true

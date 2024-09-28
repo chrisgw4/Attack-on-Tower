@@ -1,16 +1,67 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyc8nc6dshkdk"]
+[gd_scene load_steps=9 format=3 uid="uid://dyc8nc6dshkdk"]
 
 [ext_resource type="PackedScene" uid="uid://ch6crlanccoyo" path="res://Components/stats.tscn" id="1_74oxt"]
+[ext_resource type="Script" path="res://Towers/castle.gd" id="1_ton3u"]
+[ext_resource type="Texture2D" uid="uid://b24ey5la1opnw" path="res://Castle/Tower.png" id="2_bxefc"]
 [ext_resource type="PackedScene" uid="uid://ds4ldaxrob63a" path="res://Components/health_component.tscn" id="3_pa3vw"]
+[ext_resource type="PackedScene" uid="uid://hv5htjymkrih" path="res://HurtHitBox/hurtbox.tscn" id="5_2kcmi"]
 
-[node name="Castle" type="Node2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_opfct"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bxefc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eitgu"]
+radius = 52.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kgv0e"]
+radius = 77.0065
+
+[node name="Castle" type="Node2D" node_paths=PackedStringArray("health_component", "health_bar", "stats")]
+script = ExtResource("1_ton3u")
+health_component = NodePath("HealthComponent")
+health_bar = NodePath("ProgressBar")
+stats = NodePath("Stats")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_opfct")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="Stats" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("1_74oxt")]
-base_health_points = 10.0
+base_health_points = 100.0
 health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_pa3vw")]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 25)
+shape = SubResource("CircleShape2D_eitgu")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -53.0
+offset_top = -69.0
+offset_right = 53.0
+offset_bottom = -42.0
+value = 100.0
+
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component", "collision_shape") instance=ExtResource("5_2kcmi")]
+collision_layer = 16
+health_component = NodePath("../HealthComponent")
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 25)
+shape = SubResource("CircleShape2D_kgv0e")
+debug_color = Color(0.862745, 0.247059, 0.647059, 0.419608)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

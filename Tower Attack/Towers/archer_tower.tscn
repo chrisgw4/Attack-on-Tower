@@ -335,3 +335,6 @@ libraries = {
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 shape = SubResource("CircleShape2D_eyphu")
+
+[node name="AttackDelay" parent="." index="5"]
+wait_time = 0.9
