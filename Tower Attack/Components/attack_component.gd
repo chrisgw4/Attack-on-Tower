@@ -1,7 +1,7 @@
 extends Node
 class_name AttackComponent
 
-@export var damage:float = 0
+var damage:float = 0
 @export var animation_player:AnimationPlayer
 
 

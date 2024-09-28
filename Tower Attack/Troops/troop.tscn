@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://crjvw1jr1m1kr"]
+
+[ext_resource type="Script" path="res://Troops/Troop.gd" id="1_tx33t"]
+[ext_resource type="PackedScene" uid="uid://ch6crlanccoyo" path="res://Components/stats.tscn" id="2_kuxgo"]
+[ext_resource type="PackedScene" uid="uid://c5ky47hdh6a4l" path="res://Components/movement_component.tscn" id="3_bk2ix"]
+[ext_resource type="PackedScene" uid="uid://ds4ldaxrob63a" path="res://Components/health_component.tscn" id="4_n0xsb"]
+[ext_resource type="PackedScene" uid="uid://61d3tkp5d5ug" path="res://Components/attack_component.tscn" id="5_hc1qj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qj3ks"]
+animations = []
+
+[node name="Troop" type="CharacterBody2D" node_paths=PackedStringArray("stats")]
+script = ExtResource("1_tx33t")
+stats = NodePath("Stats")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qj3ks")
+animation = &""
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+debug_color = Color(0.890196, 0.27451, 0.462745, 0.419608)
+
+[node name="Stats" parent="." node_paths=PackedStringArray("health_component", "movement_component", "attack_component") instance=ExtResource("2_kuxgo")]
+health_component = NodePath("../HealthComponent")
+movement_component = NodePath("../MovementComponent")
+attack_component = NodePath("../AttackComponent")
+
+[node name="MovementComponent" parent="." instance=ExtResource("3_bk2ix")]
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_n0xsb")]
+
+[node name="AttackComponent" parent="." instance=ExtResource("5_hc1qj")]

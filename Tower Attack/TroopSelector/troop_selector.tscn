@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdwgygfoa6ru2"]
+
+[ext_resource type="Script" path="res://TroopSelector/troop_selector.gd" id="1_00xp4"]
+[ext_resource type="PackedScene" uid="uid://dju42hngi6bie" path="res://Troops/Skeleton.tscn" id="2_cdffr"]
+[ext_resource type="Texture2D" uid="uid://3pq8k7yu0xq0" path="res://TroopIcons/Skeleton_Icon.png" id="3_pfjey"]
+[ext_resource type="Texture2D" uid="uid://b6yuaxxrl07lu" path="res://UpgradeButton/Upgrade.png" id="3_w3ykp"]
+[ext_resource type="Texture2D" uid="uid://cmuwerffibptn" path="res://UpgradeButton/Upgrade_Click.png" id="4_eyr53"]
+
+[node name="TroopSelector" type="Container" node_paths=PackedStringArray("troop_container")]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -319.0
+offset_right = 92.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+script = ExtResource("1_00xp4")
+troop_container = NodePath("HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer")
+skeleton_scene = ExtResource("2_cdffr")
+
+[node name="HFlowContainer" type="HFlowContainer" parent="."]
+custom_minimum_size = Vector2(700, 4.79213e-12)
+layout_mode = 2
+
+[node name="VFlowContainer" type="VFlowContainer" parent="HFlowContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HFlowContainer/VFlowContainer"]
+custom_minimum_size = Vector2(280, 650)
+layout_mode = 2
+
+[node name="FlowContainer" type="FlowContainer" parent="HFlowContainer/VFlowContainer/ScrollContainer"]
+custom_minimum_size = Vector2(280, 4.79213e-12)
+layout_mode = 2
+
+[node name="VFlowContainer" type="VFlowContainer" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer"]
+custom_minimum_size = Vector2(4.79213e-12, 60)
+layout_mode = 2
+theme_override_constants/v_separation = -4
+
+[node name="TextureButton2" type="TextureButton" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_pfjey")
+stretch_mode = 0
+
+[node name="TextureButton" type="TextureButton" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_w3ykp")
+texture_pressed = ExtResource("4_eyr53")
+stretch_mode = 3
+
+[connection signal="pressed" from="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer/TextureButton2" to="." method="_on_texture_button_2_pressed"]

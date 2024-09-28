@@ -1,6 +1,6 @@
-[gd_scene load_steps=39 format=3 uid="uid://dju42hngi6bie"]
+[gd_scene load_steps=40 format=3 uid="uid://dju42hngi6bie"]
 
-[ext_resource type="PackedScene" uid="uid://crjvw1jr1m1kr" path="res://troop.tscn" id="1_7ly42"]
+[ext_resource type="PackedScene" uid="uid://crjvw1jr1m1kr" path="res://Troops/troop.tscn" id="1_cvqu6"]
 [ext_resource type="Texture2D" uid="uid://t2313mpxpcp2" path="res://Characters(100x100)/Skeleton/Skeleton with shadows/Skeleton-Walk.png" id="2_05qs6"]
 [ext_resource type="Texture2D" uid="uid://cdh2t4sgjb245" path="res://Characters(100x100)/Skeleton/Skeleton with shadows/Skeleton-Attack01.png" id="3_i8se4"]
 [ext_resource type="Texture2D" uid="uid://b1fapjnaeb3qs" path="res://Characters(100x100)/Skeleton/Skeleton with shadows/Skeleton-Attack02.png" id="3_pfwh5"]
@@ -218,6 +218,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk"]
+}
 
 [sub_resource type="Animation" id="Animation_dvgbk"]
 resource_name = "attack"
@@ -245,6 +257,34 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"attack"]
+}
+
+[sub_resource type="Animation" id="Animation_jw63y"]
+resource_name = "attack2"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack2"]
 }
 
 [sub_resource type="Animation" id="Animation_35owb"]
@@ -304,34 +344,6 @@ tracks/1/keys = {
 "values": [&"walk"]
 }
 
-[sub_resource type="Animation" id="Animation_jw63y"]
-resource_name = "attack2"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"attack2"]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fjyfl"]
 _data = {
 "RESET": SubResource("Animation_ow4iw"),
@@ -341,18 +353,38 @@ _data = {
 "walk": SubResource("Animation_pwqfg")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2y122"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_jlc4g"]
+radius = 1.0
 
-[node name="Skeleton" instance=ExtResource("1_7ly42")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_tcdqu"]
+
+[node name="Skeleton" instance=ExtResource("1_cvqu6")]
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_s16qa")
-animation = &"death"
+animation = &"walk"
 
 [node name="AnimationPlayer" parent="." index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_fjyfl")
 }
 
+[node name="CollisionShape2D" parent="." index="2"]
+scale = Vector2(0.25, 0.25)
+shape = SubResource("CircleShape2D_jlc4g")
+
 [node name="CollisionShape2D" parent="Area2D" index="0"]
-shape = SubResource("CircleShape2D_2y122")
+shape = SubResource("CircleShape2D_tcdqu")
+
+[node name="Stats" parent="." index="4"]
+base_health_points = 10.0
+base_speed = 20.0
+base_attack_damage = 1.0
+
+[node name="MovementComponent" parent="." index="5" node_paths=PackedStringArray("character_body", "animation_player", "animated_sprite")]
+character_body = NodePath("..")
+animation_player = NodePath("../AnimationPlayer")
+animated_sprite = NodePath("../AnimatedSprite2D")
+
+[node name="AttackComponent" parent="." index="7" node_paths=PackedStringArray("animation_player")]
+animation_player = NodePath("../AnimationPlayer")

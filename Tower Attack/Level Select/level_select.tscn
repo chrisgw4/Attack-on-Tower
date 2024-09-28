@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://cerav4m0e7hi5"]
+
+[ext_resource type="Script" path="res://Level Select/level_select.gd" id="1_ne3ly"]
+[ext_resource type="PackedScene" uid="uid://ccbl2ycpncy2b" path="res://Levels/level_icon.tscn" id="2_dawuj"]
+
+[node name="LevelSelect" type="Control" node_paths=PackedStringArray("levels")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ne3ly")
+levels = NodePath("MarginContainer/VFlowContainer/Levels")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(4.79213e-12, 25)
+layout_mode = 0
+offset_right = 45.0
+offset_bottom = 31.0
+text = "Back"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VFlowContainer" type="VFlowContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MarginContainer/VFlowContainer"]
+custom_minimum_size = Vector2(640, 4.79213e-12)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VFlowContainer/HFlowContainer"]
+layout_mode = 2
+text = "Level Select"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VFlowContainer"]
+layout_mode = 2
+
+[node name="Levels" type="FlowContainer" parent="MarginContainer/VFlowContainer"]
+custom_minimum_size = Vector2(4.79213e-12, 300)
+layout_mode = 2
+alignment = 1
+
+[node name="LevelIcon" parent="MarginContainer/VFlowContainer/Levels" instance=ExtResource("2_dawuj")]
+layout_mode = 2
+
+[node name="LevelIcon2" parent="MarginContainer/VFlowContainer/Levels" instance=ExtResource("2_dawuj")]
+layout_mode = 2
+
+[node name="LevelIcon3" parent="MarginContainer/VFlowContainer/Levels" instance=ExtResource("2_dawuj")]
+layout_mode = 2

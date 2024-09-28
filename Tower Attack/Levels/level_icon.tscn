@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccbl2ycpncy2b"]
+
+[ext_resource type="Texture2D" uid="uid://cnqn65ge6kyhu" path="res://icon.svg" id="1_tn5vw"]
+
+[node name="LevelIcon" type="MarginContainer"]
+custom_minimum_size = Vector2(100, 142)
+offset_right = 100.0
+offset_bottom = 142.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.141176, 0.141176, 0.141176, 0.760784)
+
+[node name="VFlowContainer" type="VFlowContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VFlowContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("1_tn5vw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HSeparator" type="HSeparator" parent="VFlowContainer"]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="HFlowContainer" type="HFlowContainer" parent="VFlowContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VFlowContainer/HFlowContainer"]
+layout_mode = 2
+text = "Level 1-1"

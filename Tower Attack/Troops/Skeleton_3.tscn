@@ -1,6 +1,6 @@
 [gd_scene load_steps=58 format=3 uid="uid://b0r6dtm5t4rx0"]
 
-[ext_resource type="PackedScene" uid="uid://crjvw1jr1m1kr" path="res://troop.tscn" id="1_4p13a"]
+[ext_resource type="PackedScene" uid="uid://crjvw1jr1m1kr" path="res://Troops/troop.tscn" id="1_4p13a"]
 [ext_resource type="Texture2D" uid="uid://dtpu7vnibxv83" path="res://Characters(100x100)/Greatsword Skeleton/Greatsword Skeleton with shadows/Greatsword Skeleton-Walk.png" id="2_3gqx6"]
 [ext_resource type="Texture2D" uid="uid://o4fdlpqpvgaj" path="res://Characters(100x100)/Greatsword Skeleton/Greatsword Skeleton with shadows/Greatsword Skeleton-Attack01.png" id="2_xjc7v"]
 [ext_resource type="Texture2D" uid="uid://bgjh35so2cgk2" path="res://Characters(100x100)/Greatsword Skeleton/Greatsword Skeleton with shadows/Greatsword Skeleton-Attack02.png" id="3_iq0ka"]

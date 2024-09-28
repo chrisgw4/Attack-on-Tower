@@ -1,23 +1,42 @@
 extends Node
 class_name MovementComponent
 
-@export var speed:float = 0
+var speed:float = 0
 @export var accel:float = 2
 
 @export var character_body:CharacterBody2D
+@export var animation_player:AnimationPlayer
+@export var animated_sprite:AnimatedSprite2D
+
+var vel:Vector2 = Vector2.ZERO:
+	set(new_val):
+		
+		vel = new_val
+		
+		if vel.x >= 0:
+			animated_sprite.flip_h = false
+		else:
+			animated_sprite.flip_h = true
+		
+		
+
 
 func _physics_process(delta: float) -> void:
-	move(delta)
+	move()
 
+
+func set_velocity(velocity:Vector2) -> void:
+	vel = (velocity*speed).limit_length(speed)
 
 func accelerate_in_direction(new_pos:Vector2) -> void:
-	character_body.velocity += character_body.global_position.direction_to(new_pos) * accel * get_physics_process_delta_time()
+	vel += character_body.global_position.direction_to(new_pos) * accel * get_physics_process_delta_time()
 
 
-func move(delta:float) -> void:
-	character_body.velocity = character_body.velocity.limit_length(speed)
+func move() -> void:
+	animation_player.play("walk")
+	character_body.velocity = vel.limit_length(speed)
 	character_body.move_and_slide()
-	decelerate(delta)
+	#decelerate(delta)
 
 func decelerate(delta:float) -> void:
-	character_body.velocity = character_body.velocity.lerp(Vector2.ZERO, 0.15*delta)
+	vel = vel.lerp(Vector2.ZERO, 0.015*delta)
