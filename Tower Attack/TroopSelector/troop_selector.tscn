@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cmuwerffibptn" path="res://UpgradeButton/Upgrade_Click.png" id="4_eyr53"]
 [ext_resource type="PackedScene" uid="uid://nj4mb0b2s7vf" path="res://Troops/Orc.tscn" id="4_fg3o6"]
 [ext_resource type="Texture2D" uid="uid://ck5y38v2tlunh" path="res://TroopIcons/Skeleton_Icon_Clicked.png" id="4_lcl87"]
-[ext_resource type="PackedScene" uid="uid://wohn2uqrgm1r" path="res://Troops/Orc_2.tscn" id="5_2n5jg"]
+[ext_resource type="PackedScene" uid="uid://b1125v5h172u0" path="res://Troops/Orc_2.tscn" id="5_2n5jg"]
 [ext_resource type="PackedScene" uid="uid://cke4prko3d5dv" path="res://Troops/Orc_3.tscn" id="6_4mob3"]
 [ext_resource type="Texture2D" uid="uid://b2qx203cql8ia" path="res://TroopIcons/Orc_Icon.png" id="11_5d8vl"]
 [ext_resource type="Texture2D" uid="uid://ddv0b2x1p2ka4" path="res://TroopIcons/Orc_Icon_Clicked.png" id="12_opeaf"]
