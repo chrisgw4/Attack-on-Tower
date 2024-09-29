@@ -87,6 +87,8 @@ func _check_upgrade_cost(cost, type) -> void:
 		troop_selector.upgrade_skeleton()
 	elif type == "Orc":
 		troop_selector.upgrade_orc()
+	elif type =="wearwolf":
+		troop_selector.upgrade_were()
 	
 
 func _spawn_troop_in_game(troop, stats_upgrade) -> void:

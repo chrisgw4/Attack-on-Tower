@@ -1,1 +1,16 @@
 res://Levels/tutorial.tscn
+res://Troops/Orc_2.tscn
+res://Troops/Orc.tscn
+res://Troops/Skeleton_2.tscn
+res://Troops/Skeleton_3.tscn
+res://Levels/level.tscn
+res://Levels/level_1.tscn
+res://Troops/troop.tscn
+res://TroopSelector/troop_selector.tscn
+res://Levels/text_box.tscn
+res://Towers/castle.tscn
+res://Troops/werebear.tscn
+res://Troops/wearwolf.tscn
+res://Troops/Troop.gd
+res://TroopSelector/troop_selector.gd
+res://Levels/level.gd

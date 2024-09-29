@@ -12,9 +12,13 @@ signal spawn_troop(troop, stats_upgrade:StatsUpgrade)
 
 @export var orc_scene:Array[PackedScene]
 
+@export var were_scene:Array[PackedScene]
+
 @export var skeleton_button:TextureButton
 
 @export var orc_button:TextureButton
+
+@export var were_button:TextureButton
 
 signal upgrade_pressed(upgrade_cost, type)
 
@@ -27,6 +31,9 @@ func _ready() -> void:
 	dictionary[orc_scene] = StatsUpgrade.new()
 	dictionary[orc_scene].upgrade_cost = 120
 	dictionary[orc_scene].cost = 15
+	dictionary[were_scene] = StatsUpgrade.new()
+	dictionary[were_scene].upgrade_cost = 150
+	dictionary[were_scene].cost = 20
 
 
 func _on_skeleton_button_pressed() -> void:
@@ -94,3 +101,20 @@ func upgrade_orc() -> void:
 		label.clear()
 		label.append_text("[center][img=30x25]res://Mana/blue_crystal_0003.png[/img]" + str(int(dictionary[orc_scene].upgrade_cost)))
 	
+
+
+func _on_were_button_pressed():
+	emit_signal("spawn_troop", were_scene[dictionary[were_scene].times_upgraded].instantiate(), dictionary[were_scene])
+	
+	
+func upgrade_were():
+	dictionary[were_scene].level_up()
+	if dictionary[were_scene].times_upgraded == 1:
+		were_button.texture_normal = load("res://TroopIcons/Werebear_Icon.png")
+		were_button.texture_pressed = load("res://TroopIcons/Werebear_Icon_Clicked.png")
+		var label = $HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer3/WereUpgrade/RichTextLabel3
+		label.clear()
+
+
+func _on_were_upgrade_pressed():
+	emit_signal("upgrade_pressed", dictionary[were_scene].upgrade_cost, "wearwolf")
