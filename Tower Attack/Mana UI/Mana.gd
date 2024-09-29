@@ -1,7 +1,7 @@
 extends Container
 class_name Mana
 
-var mana = 100:
+@export var mana = 100:
 	set(new_val):
 		mana = new_val
 		label.clear()

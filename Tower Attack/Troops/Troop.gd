@@ -8,6 +8,8 @@ extends CharacterBody2D
 
 @export var attack_delay:Timer 
 
+var cost:int = 0
+
 var time_alive:float = 0
 signal death_time(troop)
 signal attack
