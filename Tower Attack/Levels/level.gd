@@ -44,6 +44,9 @@ var troop_count:int = 0:
 		troop_count = new_val
 		if troop_count == 0 and wave_timer.time_left == 0:
 			wave_active = false
+			$Fight1Music.stop()
+			$Fight2Music.stop()
+			$PlanMusic.play()
 			if round_number >= max_rounds:
 				show_lose_screen()
 				return
@@ -60,8 +63,17 @@ func _ready() -> void:
 	troop_selector.connect("spawn_troop", _spawn_troop_in_game)
 	troop_selector.connect("upgrade_pressed", _check_upgrade_cost)
 	castle.health_component.connect("died", _show_win_screen)
+	$PlanMusic.autoplay = true
+	$PlanMusic.play()
+	round_number = 0
+
+
+var shown_win:bool = false
 
 func _show_win_screen() -> void:
+	if shown_win:
+		return
+	shown_win = true
 	$WinLoseScreen.rounds_taken = round_number
 	$WinLoseScreen.max_rounds = max_rounds
 	if round_number == max_rounds and castle.health_component.current_hp > 0:
@@ -100,6 +112,7 @@ func _spawn_troop_in_game(troop, stats_upgrade) -> void:
 		return
 	if mana.mana < stats_upgrade.cost:
 		return
+	$MenuClick.play()
 	mana.mana -= stats_upgrade.cost
 	troop.global_position = spawn_node.global_position
 	troop.stats.start_velocity = start_direction
@@ -120,15 +133,36 @@ func _mana_increase(troop) -> void:
 @export var wave_timer:Timer
 
 func _on_start_wave_button_pressed() -> void:
+	$MenuClick.play()
 	label.show()
 	wave_active = true
 	can_send_troops = true
 	start_wave_button.hide()
 	wave_timer.start()
 	round_number += 1
+	$PlanMusic.stop()
+	
+	if round_number < max_rounds:
+		$Fight1Music.play()
+		$Fight1Music.autoplay = true
+	else:
+		$Fight2Music.play()
+		$Fight2Music.autoplay = true
 
 
 func _on_wave_timer_timeout() -> void:
+	if troop_count == 0:
+		wave_active = false
+		$Fight1Music.stop()
+		$Fight2Music.stop()
+		$PlanMusic.play()
+		if round_number >= max_rounds:
+			_show_win_screen()
+			return
+		
+		start_wave_button.show()
+		label.hide()
+		
 	can_send_troops = false
 
 
@@ -139,3 +173,16 @@ func _on_troop_select_delay_timeout() -> void:
 
 func _on_main_menu_button_pressed() -> void:
 	get_tree().change_scene_to_packed(load("res://Main Menu/main_menu.tscn"))
+
+
+func _on_plan_music_finished() -> void:
+	$PlanMusic.play()
+
+
+
+func _on_fight_1_music_finished() -> void:
+	$Fight1Music.play()
+
+
+func _on_fight_2_music_finished() -> void:
+	$Fight2Music.play()

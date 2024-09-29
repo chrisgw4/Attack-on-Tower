@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bae21eka1bdb4"
+path="res://.godot/imported/skull_fail.mp3-7caf60602a79b99a399ef09167cbcf64.mp3str"
+
+[deps]
+
+source_file="res://sound effects/skull_fail.mp3"
+dest_files=["res://.godot/imported/skull_fail.mp3-7caf60602a79b99a399ef09167cbcf64.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

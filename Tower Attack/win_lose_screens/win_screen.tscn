@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpbbf1a01ngwr"]
+[gd_scene load_steps=9 format=3 uid="uid://cpbbf1a01ngwr"]
 
 [ext_resource type="Script" path="res://win_lose_screens/win_screen.gd" id="1_lvc2s"]
 [ext_resource type="FontFile" uid="uid://bsqyetpr5ufu8" path="res://Fonts/joystix monospace.otf" id="1_sel3g"]
+[ext_resource type="Texture2D" uid="uid://xqdm7djyrv1o" path="res://buttons/MAIN_MENU.png" id="3_jp5gw"]
+[ext_resource type="Texture2D" uid="uid://ctcdskr8fvm8q" path="res://buttons/Main_Menu_Clicked.png" id="4_epcbo"]
+[ext_resource type="AudioStream" uid="uid://cmneasbh7iuq8" path="res://music/Battle Won.wav" id="5_o1ar8"]
+[ext_resource type="AudioStream" uid="uid://c4xk38obiv440" path="res://music/Battle Lost.wav" id="6_6k1x0"]
+[ext_resource type="AudioStream" uid="uid://uratlkrsvs3" path="res://sound effects/Skull.wav" id="7_47a7h"]
+[ext_resource type="AudioStream" uid="uid://bae21eka1bdb4" path="res://sound effects/skull_fail.mp3" id="8_vpfo6"]
 
-[node name="WinLoseScreen" type="CanvasLayer"]
+[node name="WinLoseScreen" type="CanvasLayer" node_paths=PackedStringArray("skull_container")]
 script = ExtResource("1_lvc2s")
+skull_container = NodePath("SkullContainer")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 661.0
@@ -38,5 +45,41 @@ text = "It took you 3/10 rounds"
 
 [node name="Label3" type="Label" parent="CenterContainer/HFlowContainer"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("1_sel3g")
 text = "323232"
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 271.0
+offset_top = 234.0
+offset_right = 660.0
+offset_bottom = 384.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("3_jp5gw")
+texture_pressed = ExtResource("4_epcbo")
+
+[node name="WinSoundEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_o1ar8")
+bus = &"Sound Effects"
+
+[node name="LostSoundEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_6k1x0")
+bus = &"Sound Effects"
+
+[node name="SkullContainer" type="HFlowContainer" parent="."]
+offset_top = 12.0
+offset_right = 641.0
+offset_bottom = 155.0
+alignment = 1
+
+[node name="SkullSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_47a7h")
+bus = &"Sound Effects"
+
+[node name="SkullLossSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_vpfo6")
+volume_db = 15.0
+bus = &"Sound Effects"
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

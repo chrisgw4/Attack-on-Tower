@@ -56,8 +56,8 @@ func upgrade_skeleton() -> void:
 		skeleton_button.texture_pressed = load("res://TroopIcons/Skeleton3_Icon_Clicked.png")
 		var label = $HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer/SkeletonUpgrade/RichTextLabel3
 		label.clear()
-		label.append_text("[center][img=30x25]res://Mana/blue_crystal_0003.png[/img]" + str(int(dictionary[skeleton_scene].upgrade_cost)))
-	
+		#label.append_text("[center][img=30x25]res://Mana/blue_crystal_0003.png[/img]" + str(int(dictionary[skeleton_scene].upgrade_cost)))
+		
 
 class StatsUpgrade:
 	var damage_increase:float = 1.0
@@ -99,7 +99,7 @@ func upgrade_orc() -> void:
 		orc_button.texture_pressed = load("res://TroopIcons/Orc3_Icon_Clicked.png")
 		var label = $HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer2/OrcUpgrade/RichTextLabel3
 		label.clear()
-		label.append_text("[center][img=30x25]res://Mana/blue_crystal_0003.png[/img]" + str(int(dictionary[orc_scene].upgrade_cost)))
+		#label.append_text("[center][img=30x25]res://Mana/blue_crystal_0003.png[/img]" + str(int(dictionary[orc_scene].upgrade_cost)))
 	
 
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://bwjqfjogic5s2"]
+[gd_scene load_steps=24 format=3 uid="uid://bwjqfjogic5s2"]
 
 [ext_resource type="PackedScene" uid="uid://cua2xojn1tjnw" path="res://Towers/tower.tscn" id="1_xk7v1"]
 [ext_resource type="Texture2D" uid="uid://cxpo222idu5b4" path="res://Characters(100x100)/Wizard/Wizard with shadows/Wizard-Attack01.png" id="2_8xae2"]
 [ext_resource type="PackedScene" uid="uid://j1oyuvkgiu36" path="res://Towers/fireball.tscn" id="2_nilj7"]
 [ext_resource type="Texture2D" uid="uid://4w1j6u5l05rf" path="res://Characters(100x100)/Wizard/Wizard with shadows/Wizard-Idle.png" id="3_73r1b"]
+[ext_resource type="AudioStream" uid="uid://dwf8ta817r6mh" path="res://sound effects/fireball.wav" id="5_s3h0x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4atkb"]
 atlas = ExtResource("2_8xae2")
@@ -210,8 +211,10 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_3hg1w"]
 radius = 69.0072
 
-[node name="WizzardTower" instance=ExtResource("1_xk7v1")]
+[node name="WizzardTower" node_paths=PackedStringArray("shoot_sound") instance=ExtResource("1_xk7v1")]
 projectile = ExtResource("2_nilj7")
+shoot_sound = NodePath("Fireball")
+start_sound_at = 0.28
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_bpiej")
@@ -230,3 +233,7 @@ shape = SubResource("CircleShape2D_3hg1w")
 
 [node name="AttackDelay" parent="." index="5"]
 wait_time = 1.0
+
+[node name="Fireball" type="AudioStreamPlayer2D" parent="." index="6"]
+stream = ExtResource("5_s3h0x")
+bus = &"Sound Effects"

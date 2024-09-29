@@ -36,5 +36,6 @@ func update_stats(stats_upgrade) -> void:
 		#print(movement_component.speed, " Speed")
 	if attack_component:
 		attack_component.damage = base_attack_damage*stats_upgrade.damage_increase
+		print(attack_component.damage)
 		#print(attack_component.damage, " Damage")
 	

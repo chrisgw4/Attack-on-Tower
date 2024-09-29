@@ -10,15 +10,14 @@ func _ready():
 	label.append_text(dialogue[text_index])
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 func _on_texture_button_pressed():
 	
 	label.clear()
 	text_index+=1
+	$MenuClick.pitch_scale = 1 - randf_range(-0.4, 0.4)
+	$MenuClick.play()
 	if text_index == len(dialogue):
 		emit_signal("text_finished")
 		queue_free()

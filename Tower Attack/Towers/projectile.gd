@@ -22,6 +22,7 @@ func check_hit(to_be_freed) -> void:
 		if animation_player and animation_player.has_animation("hit"):
 			move_component.stop_moving = true
 			animation_player.play("hit")
+			#$Explosion.play()
 		else:
 			queue_free()
 	elif animation_player and animation_player.has_animation("hit"):

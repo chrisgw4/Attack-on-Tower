@@ -9,7 +9,7 @@ offset_bottom = 142.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
-color = Color(0.141176, 0.141176, 0.141176, 0.760784)
+color = Color(0, 0, 0, 0.431373)
 
 [node name="VFlowContainer" type="VFlowContainer" parent="."]
 layout_mode = 2

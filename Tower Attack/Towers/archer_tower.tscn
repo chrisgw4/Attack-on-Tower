@@ -1,10 +1,11 @@
-[gd_scene load_steps=39 format=3 uid="uid://y13i7rogldx0"]
+[gd_scene load_steps=40 format=3 uid="uid://y13i7rogldx0"]
 
 [ext_resource type="PackedScene" uid="uid://cua2xojn1tjnw" path="res://Towers/tower.tscn" id="1_pa7rv"]
 [ext_resource type="Texture2D" uid="uid://dcklfxxlvqr1n" path="res://Characters(100x100)/Archer/Archer with shadows/Archer-Attack01.png" id="2_f6wqy"]
 [ext_resource type="PackedScene" uid="uid://b0spk5txs8f0d" path="res://Towers/arrow.tscn" id="2_o8aog"]
 [ext_resource type="Texture2D" uid="uid://ba7r84kd0vgw" path="res://Characters(100x100)/Archer/Archer with shadows/Archer-Attack02.png" id="3_k6db8"]
 [ext_resource type="Texture2D" uid="uid://bbe646eucui2m" path="res://Characters(100x100)/Archer/Archer with shadows/Archer-Idle.png" id="4_4kprt"]
+[ext_resource type="AudioStream" uid="uid://bsqhmuxtxaigt" path="res://sound effects/arrow.wav" id="6_oxgs4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_brejr"]
 atlas = ExtResource("2_f6wqy")
@@ -321,8 +322,10 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_eyphu"]
 radius = 61.0
 
-[node name="ArcherTower" instance=ExtResource("1_pa7rv")]
+[node name="ArcherTower" node_paths=PackedStringArray("shoot_sound") instance=ExtResource("1_pa7rv")]
 projectile = ExtResource("2_o8aog")
+shoot_sound = NodePath("ShootSound")
+start_sound_at = 0.19
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_v5oeq")
@@ -338,3 +341,7 @@ shape = SubResource("CircleShape2D_eyphu")
 
 [node name="AttackDelay" parent="." index="5"]
 wait_time = 0.9
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="." index="6"]
+stream = ExtResource("6_oxgs4")
+bus = &"Sound Effects"

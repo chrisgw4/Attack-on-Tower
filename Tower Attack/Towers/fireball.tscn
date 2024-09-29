@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://j1oyuvkgiu36"]
+[gd_scene load_steps=17 format=3 uid="uid://j1oyuvkgiu36"]
 
 [ext_resource type="PackedScene" uid="uid://dc61u3pfpbvcj" path="res://Towers/projectile.tscn" id="1_6ub45"]
 [ext_resource type="Texture2D" uid="uid://dsnlmwoxwwrke" path="res://Characters(100x100)/Wizard/Magic(projectile)/Wizard-Attack02_Effect.png" id="2_5cjlc"]
+[ext_resource type="AudioStream" uid="uid://c21lp0dk3g1vg" path="res://sound effects/explosion.wav" id="3_ec7gf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xvjg8"]
 atlas = ExtResource("2_5cjlc")
@@ -205,3 +206,7 @@ max_num_enemies_hit = 8
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_s6eb1")
+
+[node name="Explosion" type="AudioStreamPlayer2D" parent="." index="6"]
+stream = ExtResource("3_ec7gf")
+bus = &"Sound Effects"

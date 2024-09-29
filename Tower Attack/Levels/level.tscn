@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dg6kjmhgqhrvv"]
+[gd_scene load_steps=32 format=3 uid="uid://dg6kjmhgqhrvv"]
 
 [ext_resource type="Script" path="res://Levels/level.gd" id="1_pj4s3"]
 [ext_resource type="Texture2D" uid="uid://bv0pojgt4e3sl" path="res://Pixel Art Top Down - Basic/Texture/TX Tileset Grass.png" id="2_ea0s2"]
@@ -11,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://chk1crdd4nwlp" path="res://buttons/ATTACK_Clicked.png" id="8_msrrm"]
 [ext_resource type="Texture2D" uid="uid://xqdm7djyrv1o" path="res://buttons/MAIN_MENU.png" id="10_a5ypd"]
 [ext_resource type="Texture2D" uid="uid://ctcdskr8fvm8q" path="res://buttons/Main_Menu_Clicked.png" id="11_ry4h1"]
+[ext_resource type="AudioStream" uid="uid://cjkeotuf1bukf" path="res://music/Explore.mp3" id="12_huaq6"]
+[ext_resource type="AudioStream" uid="uid://bs1dvokm37w2m" path="res://music/Fight 1.mp3" id="13_2ch7s"]
+[ext_resource type="AudioStream" uid="uid://q7of7a2k4nl1" path="res://music/Fight 2.mp3" id="14_nq3ov"]
+[ext_resource type="AudioStream" uid="uid://u45xb7bbb2pt" path="res://sound effects/menu_click.wav" id="15_d6uuf"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7oala"]
 vertices = PackedVector2Array(2, -2, 8, -2, 8, 1, 2, 1, 2, 8, -2, 8, -2, 1, -2, -2, -8, 1, -8, -2, 2, -8, -2, -8)
@@ -804,8 +808,17 @@ navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_u8nlk")
 sources/1 = SubResource("TileSetAtlasSource_q5opr")
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("spawn_node", "round_label", "troop_delay", "troop_selector", "tile_map", "mana", "label", "start_wave_button", "wave_timer")]
 script = ExtResource("1_pj4s3")
+spawn_node = NodePath("SpawnPoint")
+round_label = NodePath("HFlowContainer2/Label")
+troop_delay = NodePath("TroopSelectDelay")
+troop_selector = NodePath("TroopSelector")
+tile_map = NodePath("TileMap")
+mana = NodePath("Mana")
+label = NodePath("HFlowContainer/Label")
+start_wave_button = NodePath("Container/HFlowContainer/StartWaveButton")
+wave_timer = NodePath("WaveTimer")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -906,7 +919,26 @@ scale = Vector2(0.2, 0.2)
 texture_normal = ExtResource("10_a5ypd")
 texture_pressed = ExtResource("11_ry4h1")
 
+[node name="PlanMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_huaq6")
+bus = &"Music"
+
+[node name="Fight1Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_2ch7s")
+bus = &"Music"
+
+[node name="Fight2Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_nq3ov")
+bus = &"Music"
+
+[node name="MenuClick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_d6uuf")
+bus = &"Sound Effects"
+
 [connection signal="pressed" from="Container/HFlowContainer/StartWaveButton" to="." method="_on_start_wave_button_pressed"]
 [connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]
 [connection signal="timeout" from="TroopSelectDelay" to="." method="_on_troop_select_delay_timeout"]
 [connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="finished" from="PlanMusic" to="." method="_on_plan_music_finished"]
+[connection signal="finished" from="Fight1Music" to="." method="_on_fight_1_music_finished"]
+[connection signal="finished" from="Fight2Music" to="." method="_on_fight_2_music_finished"]

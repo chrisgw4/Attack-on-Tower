@@ -8,6 +8,9 @@ extends Node2D
 
 @export var projectile:PackedScene
 
+@export var shoot_sound:AudioStreamPlayer2D
+@export var start_sound_at:float = 0
+
 var attack_target:Area2D = null
 
 signal attack
@@ -31,6 +34,8 @@ func _on_attack_delay_timeout() -> void:
 		animation_player.play("idle")
 
 func shoot_projectile() -> void:
+	shoot_sound.pitch_scale = 1 - randf_range(-0.4, 0.4)
+	shoot_sound.play(start_sound_at)
 	var temp:Projectile = projectile.instantiate()
 	temp.global_position = global_position
 	temp.target = attack_target

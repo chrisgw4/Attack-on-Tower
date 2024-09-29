@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c1gbncg3108a8"]
+[gd_scene load_steps=26 format=3 uid="uid://c1gbncg3108a8"]
 
 [ext_resource type="Script" path="res://Main Menu/main_menu.gd" id="1_y7fkx"]
 [ext_resource type="PackedScene" uid="uid://cerav4m0e7hi5" path="res://Level Select/level_select.tscn" id="2_2k3h3"]
@@ -19,6 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://cwhgvhgiuxuw6" path="res://buttons/START.png" id="17_yof33"]
 [ext_resource type="Texture2D" uid="uid://khqal2s5uy28" path="res://buttons/Start_Clicked.png" id="18_jp0ih"]
 [ext_resource type="FontFile" uid="uid://bsqyetpr5ufu8" path="res://Fonts/joystix monospace.otf" id="19_lniml"]
+[ext_resource type="Texture2D" uid="uid://da1ty56bck7xt" path="res://main_menu/AOT.png" id="20_esisq"]
+[ext_resource type="Texture2D" uid="uid://dhp26j6ymf4dv" path="res://main_menu/gold_skull.png" id="20_pxssn"]
+[ext_resource type="AudioStream" uid="uid://pee6n5v33r86" path="res://music/Medieval.mp3" id="21_aa1x2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jwah3"]
 texture = ExtResource("2_eykri")
@@ -679,7 +682,7 @@ range = 25.0
 
 [node name="Node2D2" type="Node2D" parent="."]
 y_sort_enabled = true
-position = Vector2(483, 300)
+position = Vector2(516, 300)
 
 [node name="Lancer" parent="Node2D2" node_paths=PackedStringArray("center") instance=ExtResource("5_h10y3")]
 position = Vector2(46, -21)
@@ -697,7 +700,7 @@ range = 40.0
 
 [node name="Node2D3" type="Node2D" parent="."]
 y_sort_enabled = true
-position = Vector2(466, 91)
+position = Vector2(554, 91)
 
 [node name="Priest" parent="Node2D3" node_paths=PackedStringArray("center") instance=ExtResource("4_dug7a")]
 position = Vector2(-45, -2)
@@ -732,7 +735,7 @@ range = 35.0
 
 [node name="Node2D5" type="Node2D" parent="."]
 y_sort_enabled = true
-position = Vector2(148, 78)
+position = Vector2(67, 78)
 
 [node name="Werewolf" parent="Node2D5" node_paths=PackedStringArray("center") instance=ExtResource("9_qhsvn")]
 center = NodePath("..")
@@ -749,7 +752,7 @@ range = 20.0
 
 [node name="Node2D6" type="Node2D" parent="."]
 y_sort_enabled = true
-position = Vector2(166, 298)
+position = Vector2(98, 298)
 
 [node name="OrcRider" parent="Node2D6" node_paths=PackedStringArray("center") instance=ExtResource("8_t5iig")]
 center = NodePath("..")
@@ -832,6 +835,8 @@ text = "Music  Volume"
 [node name="Music" type="HSlider" parent="MarginContainer2/HFlowContainer/VFlowContainer"]
 custom_minimum_size = Vector2(400, 4.79213e-12)
 layout_mode = 2
+theme_override_icons/grabber = ExtResource("20_pxssn")
+theme_override_icons/grabber_highlight = ExtResource("20_pxssn")
 max_value = 1.0
 step = 0.001
 value = 0.5
@@ -852,11 +857,32 @@ text = "Sound Effects Volume"
 [node name="SoundEffects" type="HSlider" parent="MarginContainer2/HFlowContainer/VFlowContainer"]
 custom_minimum_size = Vector2(400, 4.79213e-12)
 layout_mode = 2
+theme_override_icons/grabber = ExtResource("20_pxssn")
+theme_override_icons/grabber_highlight = ExtResource("20_pxssn")
 max_value = 1.0
 step = 0.001
 value = 0.5
+
+[node name="HFlowContainer" type="HFlowContainer" parent="."]
+layout_mode = 0
+offset_top = -21.0
+offset_right = 640.0
+offset_bottom = 179.0
+mouse_filter = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HFlowContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("20_esisq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21_aa1x2")
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="value_changed" from="MarginContainer2/HFlowContainer/VFlowContainer/Music" to="." method="_on_music_value_changed"]
 [connection signal="value_changed" from="MarginContainer2/HFlowContainer/VFlowContainer/SoundEffects" to="." method="_on_sound_effects_value_changed"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://crjvw1jr1m1kr"]
+[gd_scene load_steps=16 format=3 uid="uid://crjvw1jr1m1kr"]
 
 [ext_resource type="Script" path="res://Troops/Troop.gd" id="1_tx33t"]
 [ext_resource type="PackedScene" uid="uid://ch6crlanccoyo" path="res://Components/stats.tscn" id="2_kuxgo"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://61d3tkp5d5ug" path="res://Components/attack_component.tscn" id="5_hc1qj"]
 [ext_resource type="PackedScene" uid="uid://hv5htjymkrih" path="res://HurtHitBox/hurtbox.tscn" id="6_w1fnk"]
 [ext_resource type="PackedScene" uid="uid://cag3p1foah62y" path="res://HurtHitBox/hitbox.tscn" id="7_ywtt5"]
+[ext_resource type="AudioStream" uid="uid://dw5c8mk3tmvov" path="res://sound effects/attack_sound.wav" id="8_jvknh"]
+[ext_resource type="AudioStream" uid="uid://5xhtbpwmv3nb" path="res://sound effects/hurt.wav" id="9_fkk7d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qj3ks"]
 animations = []
@@ -115,5 +117,15 @@ shape = SubResource("CircleShape2D_l28kg")
 libraries = {
 "": SubResource("AnimationLibrary_jrxoc")
 }
+
+[node name="SwingEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_jvknh")
+volume_db = -5.0
+bus = &"Sound Effects"
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_fkk7d")
+volume_db = -5.0
+bus = &"Sound Effects"
 
 [connection signal="timeout" from="AttackDelay" to="." method="_on_attack_delay_timeout"]

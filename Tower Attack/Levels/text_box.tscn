@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgophdndcvcwb"]
+[gd_scene load_steps=8 format=3 uid="uid://dm35kndu48ysb"]
 
 [ext_resource type="Texture2D" uid="uid://b3dc5871u4w4q" path="res://Text Box/HUD Text Box.png" id="1_sahu7"]
 [ext_resource type="Texture2D" uid="uid://ykvrut2impgj" path="res://Text Box/Hechicero256.png" id="2_5gcym"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bsqyetpr5ufu8" path="res://Fonts/joystix monospace.otf" id="4_5vjsd"]
 [ext_resource type="Texture2D" uid="uid://bspohlfjhm0gt" path="res://Text Box/Next.png" id="5_p88qs"]
 [ext_resource type="Texture2D" uid="uid://dtfdpu0b04qi3" path="res://Text Box/Next_Clicked.png" id="6_5hfar"]
+[ext_resource type="AudioStream" uid="uid://u45xb7bbb2pt" path="res://sound effects/menu_click.wav" id="7_bs3hr"]
 
 [node name="Text Box" type="TextureRect" node_paths=PackedStringArray("label")]
 z_index = 8
@@ -45,5 +46,9 @@ offset_right = 699.0
 offset_bottom = 234.0
 texture_normal = ExtResource("5_p88qs")
 texture_pressed = ExtResource("6_5hfar")
+
+[node name="MenuClick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_bs3hr")
+bus = &"Sound Effects"
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

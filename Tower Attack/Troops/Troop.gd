@@ -6,9 +6,9 @@ extends CharacterBody2D
 @export var animation_player:AnimationPlayer
 @export var hurtbox:Hurtbox
 
-@export var attack_delay:Timer
+@export var attack_delay:Timer 
 
-var cost: int = 0 
+var cost:int = 0
 
 var time_alive:float = 0
 signal death_time(troop)
@@ -32,9 +32,13 @@ func _ready() -> void:
 	connect("attack", stats.attack_component.attack)
 
 func _hurt_flash() -> void:
+	$HurtSound.pitch_scale = 1 - randf_range(-0.4, 0.4)
+	$HurtSound.play()
 	hurt_animation.play("flash")
 
 func _clean_up_death() -> void:
+	$HurtSound.pitch_scale = 1 - randf_range(-0.4, 0.4)
+	$HurtSound.play()
 	emit_signal("death_time", self)
 	hurt_animation.play("flash")
 	hurtbox.collision_shape.set_deferred("disabled", true)
@@ -57,6 +61,8 @@ func _physics_process(delta: float) -> void:
 	if health_component.current_hp >0:
 		time_alive += delta
 	
+	if not move_component.stop_moving:
+		$SwingEffect.stop()
 		
 		
 		
@@ -89,7 +95,10 @@ func _physics_process(delta: float) -> void:
 
 func _on_attack_delay_timeout() -> void:
 	#emit_signal("attack")
-	if health_component.current_hp <=0:
+	if randf_range(0, 100) <= 30 and move_component.stop_moving:
+		$SwingEffect.pitch_scale = 1-randf_range(-0.4, 0.4)
+		$SwingEffect.play(0.07)
+	if health_component.current_hp <= 0 or not move_component.stop_moving:
 		return
 	attack_delay.start()
 	stats.attack_component.attack()
