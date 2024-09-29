@@ -35,3 +35,8 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("1_sel3g")
 text = "It took you 3/10 rounds"
+
+[node name="Label3" type="Label" parent="CenterContainer/HFlowContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_sel3g")
+text = "323232"

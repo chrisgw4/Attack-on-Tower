@@ -42,7 +42,7 @@ var stop_send_troops:bool = false:
 var troop_count:int = 0:
 	set(new_val):
 		troop_count = new_val
-		if troop_count == 0:
+		if troop_count == 0 and wave_timer.time_left == 0:
 			wave_active = false
 			if round_number >= max_rounds:
 				show_lose_screen()
@@ -114,7 +114,7 @@ func _mana_increase(troop) -> void:
 	troop_count -= 1
 
 
-@export var start_wave_button:Button
+@export var start_wave_button:TextureButton
 @export var wave_timer:Timer
 
 func _on_start_wave_button_pressed() -> void:
@@ -134,5 +134,6 @@ func _on_troop_select_delay_timeout() -> void:
 	stop_send_troops = false
 
 
-func _on_button_pressed() -> void:
+
+func _on_main_menu_button_pressed() -> void:
 	get_tree().change_scene_to_packed(load("res://Main Menu/main_menu.tscn"))

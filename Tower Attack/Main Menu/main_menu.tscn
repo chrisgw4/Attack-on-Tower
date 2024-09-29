@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c1gbncg3108a8"]
+[gd_scene load_steps=23 format=3 uid="uid://c1gbncg3108a8"]
 
 [ext_resource type="Script" path="res://Main Menu/main_menu.gd" id="1_y7fkx"]
 [ext_resource type="PackedScene" uid="uid://cerav4m0e7hi5" path="res://Level Select/level_select.tscn" id="2_2k3h3"]
@@ -14,6 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://cqp4iekvruvfp" path="res://NPCS/orc_rider.tscn" id="8_t5iig"]
 [ext_resource type="PackedScene" uid="uid://dhk1g08ugkgev" path="res://NPCS/werewolf.tscn" id="9_qhsvn"]
 [ext_resource type="PackedScene" uid="uid://erctwh7g4ixo" path="res://NPCS/great_sword_skeleton.tscn" id="10_u2pye"]
+[ext_resource type="Texture2D" uid="uid://bgowo0f7km1be" path="res://buttons/Tutorial.png" id="15_j8nch"]
+[ext_resource type="Texture2D" uid="uid://b8yxo633eg0v4" path="res://buttons/Tutorial_Clicked.png" id="16_ebyv5"]
+[ext_resource type="Texture2D" uid="uid://cwhgvhgiuxuw6" path="res://buttons/START.png" id="17_yof33"]
+[ext_resource type="Texture2D" uid="uid://khqal2s5uy28" path="res://buttons/Start_Clicked.png" id="18_jp0ih"]
+[ext_resource type="FontFile" uid="uid://bsqyetpr5ufu8" path="res://Fonts/joystix monospace.otf" id="19_lniml"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jwah3"]
 texture = ExtResource("2_eykri")
@@ -774,32 +779,25 @@ offset_right = 655.0
 offset_bottom = 405.0
 color = Color(0.0627451, 0.0627451, 0.0627451, 0.356863)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -48.0
-offset_top = -15.5
-offset_right = 48.0
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VFlowContainer" type="VFlowContainer" parent="MarginContainer"]
-custom_minimum_size = Vector2(4.79213e-12, 80)
+[node name="TutorialButton" type="TextureButton" parent="."]
 layout_mode = 2
-theme_override_constants/v_separation = 15
+offset_left = 281.0
+offset_top = 186.0
+offset_right = 670.0
+offset_bottom = 336.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("15_j8nch")
+texture_pressed = ExtResource("16_ebyv5")
 
-[node name="StartButton" type="Button" parent="MarginContainer/VFlowContainer"]
-layout_mode = 2
-text = "Start Game"
-
-[node name="TutorialButton" type="Button" parent="MarginContainer/VFlowContainer"]
-layout_mode = 2
-text = "Tutorial"
+[node name="StartButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 281.0
+offset_top = 141.0
+offset_right = 670.0
+offset_bottom = 291.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("17_yof33")
+texture_pressed = ExtResource("18_jp0ih")
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -828,6 +826,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer2/HFlowContainer/VFlowContainer/HFlowContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("19_lniml")
 text = "Music  Volume"
 
 [node name="Music" type="HSlider" parent="MarginContainer2/HFlowContainer/VFlowContainer"]
@@ -847,6 +846,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer2/HFlowContainer/VFlowContainer/HFlowContainer3"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("19_lniml")
 text = "Sound Effects Volume"
 
 [node name="SoundEffects" type="HSlider" parent="MarginContainer2/HFlowContainer/VFlowContainer"]
@@ -856,7 +856,7 @@ max_value = 1.0
 step = 0.001
 value = 0.5
 
-[connection signal="pressed" from="MarginContainer/VFlowContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VFlowContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="value_changed" from="MarginContainer2/HFlowContainer/VFlowContainer/Music" to="." method="_on_music_value_changed"]
 [connection signal="value_changed" from="MarginContainer2/HFlowContainer/VFlowContainer/SoundEffects" to="." method="_on_sound_effects_value_changed"]

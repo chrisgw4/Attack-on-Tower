@@ -10,6 +10,9 @@
 [node name="tutorial" node_paths=PackedStringArray("castle") instance=ExtResource("1_xvycf")]
 position = Vector2(1, 0)
 castle = NodePath("Castle")
+max_rounds = 4
+rounds_for_3_skulls = 1
+rounds_for_2_skulls = 2
 start_direction = Vector2i(1, 0)
 
 [node name="TileMap" parent="." index="0"]
