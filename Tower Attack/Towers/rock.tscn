@@ -19,7 +19,7 @@ animations = [{
 radius = 60.0083
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mfbgq"]
-radius = 46.0109
+radius = 35.0
 
 [node name="Rock" node_paths=PackedStringArray("health_component", "health_bar", "stats") instance=ExtResource("1_ikymm")]
 script = ExtResource("2_qxqrs")
@@ -35,6 +35,7 @@ collision_layer = 16
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_e2wm8")
+debug_color = Color(0.839216, 0.345098, 0.462745, 0.419608)
 
 [node name="Area2D" parent="." index="3"]
 collision_layer = 0
@@ -44,5 +45,12 @@ shape = SubResource("CircleShape2D_mfbgq")
 
 [node name="Stats" parent="." index="5"]
 base_health_points = 200.0
+
+[node name="ProgressBar" parent="." index="6"]
+offset_left = -37.0
+offset_top = -44.0
+offset_right = 69.0
+offset_bottom = -17.0
+scale = Vector2(0.7, 0.7)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
