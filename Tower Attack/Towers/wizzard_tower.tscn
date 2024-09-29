@@ -209,7 +209,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3hg1w"]
-radius = 69.0072
+radius = 58.0
 
 [node name="WizzardTower" node_paths=PackedStringArray("shoot_sound") instance=ExtResource("1_xk7v1")]
 projectile = ExtResource("2_nilj7")
@@ -221,7 +221,7 @@ sprite_frames = SubResource("SpriteFrames_bpiej")
 animation = &"idle"
 
 [node name="Stats" parent="." index="1"]
-base_attack_damage = 3.0
+base_attack_damage = 1.0
 
 [node name="AnimationPlayer" parent="." index="3"]
 libraries = {
@@ -232,7 +232,7 @@ libraries = {
 shape = SubResource("CircleShape2D_3hg1w")
 
 [node name="AttackDelay" parent="." index="5"]
-wait_time = 1.0
+wait_time = 1.75
 
 [node name="Fireball" type="AudioStreamPlayer2D" parent="." index="6"]
 stream = ExtResource("5_s3h0x")

@@ -48,7 +48,7 @@ var troop_count:int = 0:
 			$Fight2Music.stop()
 			$PlanMusic.play()
 			if round_number >= max_rounds:
-				show_lose_screen()
+				_show_win_screen()
 				return
 			
 			start_wave_button.show()

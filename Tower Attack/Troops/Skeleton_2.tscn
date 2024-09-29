@@ -415,7 +415,7 @@ shape = SubResource("CircleShape2D_a7yqk")
 [node name="Stats" parent="." index="4"]
 base_health_points = 8.0
 base_speed = 22.0
-base_attack_damage = 1.0
+base_attack_damage = 2.0
 
 [node name="MovementComponent" parent="." index="5" node_paths=PackedStringArray("character_body", "animation_player", "animated_sprite")]
 character_body = NodePath("..")

@@ -516,9 +516,9 @@ libraries = {
 shape = SubResource("CircleShape2D_p6wp6")
 
 [node name="Stats" parent="." index="4"]
-base_health_points = 9.0
+base_health_points = 10.0
 base_speed = 22.0
-base_attack_damage = 1.5
+base_attack_damage = 2.5
 
 [node name="MovementComponent" parent="." index="5" node_paths=PackedStringArray("character_body", "animation_player", "animated_sprite")]
 character_body = NodePath("..")

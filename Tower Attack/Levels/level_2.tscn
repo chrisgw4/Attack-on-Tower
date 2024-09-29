@@ -13,9 +13,9 @@
 
 [node name="Level2" node_paths=PackedStringArray("castle") instance=ExtResource("1_d0sy1")]
 castle = NodePath("Castle")
-max_rounds = 5
-rounds_for_3_skulls = 2
-rounds_for_2_skulls = 4
+max_rounds = 7
+rounds_for_3_skulls = 3
+rounds_for_2_skulls = 5
 start_direction = Vector2i(0, -1)
 
 [node name="TileMap" parent="." index="0"]
@@ -93,6 +93,3 @@ range = 25.0
 position = Vector2(-17, 17)
 center = NodePath("..")
 range = 25.0
-
-[node name="Label" parent="HFlowContainer" index="0"]
-visible = true

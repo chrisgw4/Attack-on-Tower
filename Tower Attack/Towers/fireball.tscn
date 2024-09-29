@@ -186,7 +186,7 @@ animation_player = NodePath("AnimationPlayer")
 
 [node name="Stats" parent="." index="0"]
 base_speed = 70.0
-base_attack_damage = 3.0
+base_attack_damage = 1.0
 
 [node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_2vlbf")
