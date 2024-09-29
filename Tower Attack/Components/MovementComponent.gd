@@ -17,9 +17,9 @@ var vel:Vector2 = Vector2.ZERO:
 		
 		vel = new_val
 		
-		if vel.x >= 0:
+		if vel.x > 0:
 			animated_sprite.flip_h = false
-		else:
+		elif vel.x < 0:
 			animated_sprite.flip_h = true
 		
 		

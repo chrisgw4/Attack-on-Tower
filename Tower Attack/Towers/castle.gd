@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var health_component:HealthComponent
-@export var health_bar:ProgressBar
+@export var health_bar:TextureProgressBar
 @export var stats:StatsComponent
 
 

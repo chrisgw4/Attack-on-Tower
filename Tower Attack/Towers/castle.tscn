@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyc8nc6dshkdk"]
+[gd_scene load_steps=12 format=3 uid="uid://dyc8nc6dshkdk"]
 
 [ext_resource type="PackedScene" uid="uid://ch6crlanccoyo" path="res://Components/stats.tscn" id="1_74oxt"]
 [ext_resource type="Script" path="res://Towers/castle.gd" id="1_ton3u"]
 [ext_resource type="Texture2D" uid="uid://b24ey5la1opnw" path="res://Castle/Tower.png" id="2_bxefc"]
 [ext_resource type="PackedScene" uid="uid://ds4ldaxrob63a" path="res://Components/health_component.tscn" id="3_pa3vw"]
 [ext_resource type="PackedScene" uid="uid://hv5htjymkrih" path="res://HurtHitBox/hurtbox.tscn" id="5_2kcmi"]
+[ext_resource type="Texture2D" uid="uid://bg1jhfolrsx4k" path="res://health bar/empty.png" id="6_80iqa"]
+[ext_resource type="Texture2D" uid="uid://b0bl0l3rc10re" path="res://health bar/red.png" id="7_0588o"]
+[ext_resource type="Texture2D" uid="uid://8ieubmsy7gw3" path="res://health bar/Bar.png" id="8_eox2j"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_opfct"]
 animations = [{
@@ -26,7 +29,7 @@ radius = 77.0065
 [node name="Castle" type="Node2D" node_paths=PackedStringArray("health_component", "health_bar", "stats")]
 script = ExtResource("1_ton3u")
 health_component = NodePath("HealthComponent")
-health_bar = NodePath("ProgressBar")
+health_bar = NodePath("TextureProgressBar")
 stats = NodePath("Stats")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -47,13 +50,6 @@ collision_layer = 0
 position = Vector2(0, 25)
 shape = SubResource("CircleShape2D_eitgu")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -53.0
-offset_top = -69.0
-offset_right = 53.0
-offset_bottom = -42.0
-value = 100.0
-
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component", "collision_shape") instance=ExtResource("5_2kcmi")]
 collision_layer = 16
 health_component = NodePath("../HealthComponent")
@@ -63,5 +59,23 @@ collision_shape = NodePath("CollisionShape2D")
 position = Vector2(0, 25)
 shape = SubResource("CircleShape2D_kgv0e")
 debug_color = Color(0.862745, 0.247059, 0.647059, 0.419608)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -34.0
+offset_top = -65.0
+offset_right = 6.0
+offset_bottom = -25.0
+scale = Vector2(2, 2)
+value = 100.0
+texture_under = ExtResource("6_80iqa")
+texture_progress = ExtResource("7_0588o")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -43.0
+offset_top = -69.0
+offset_right = -1.0
+offset_bottom = -58.0
+scale = Vector2(2, 2)
+texture = ExtResource("8_eox2j")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

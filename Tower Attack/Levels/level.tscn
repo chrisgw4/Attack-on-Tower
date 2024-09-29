@@ -1,10 +1,16 @@
-[gd_scene load_steps=22 format=3 uid="uid://dg6kjmhgqhrvv"]
+[gd_scene load_steps=28 format=3 uid="uid://dg6kjmhgqhrvv"]
 
 [ext_resource type="Script" path="res://Levels/level.gd" id="1_pj4s3"]
 [ext_resource type="Texture2D" uid="uid://bv0pojgt4e3sl" path="res://Pixel Art Top Down - Basic/Texture/TX Tileset Grass.png" id="2_ea0s2"]
 [ext_resource type="Texture2D" uid="uid://bwnu4ebsy23pq" path="res://Pixel Art Top Down - Basic/Texture/TX Props.png" id="3_byybq"]
-[ext_resource type="PackedScene" uid="uid://3phdegdil8hr" path="res://Mana UI/mana.tscn" id="4_8g01y"]
+[ext_resource type="PackedScene" uid="uid://3phdegdil8hr" path="res://Mana UI/mana.tscn" id="4_eqrvp"]
+[ext_resource type="PackedScene" uid="uid://cpbbf1a01ngwr" path="res://win_lose_screens/win_screen.tscn" id="4_eypdy"]
 [ext_resource type="PackedScene" uid="uid://cdwgygfoa6ru2" path="res://TroopSelector/troop_selector.tscn" id="5_kkgmv"]
+[ext_resource type="FontFile" uid="uid://bsqyetpr5ufu8" path="res://Fonts/joystix monospace.otf" id="6_ls3tk"]
+[ext_resource type="Texture2D" uid="uid://dw6aq8hirhqyu" path="res://buttons/Attack.png" id="7_caw7d"]
+[ext_resource type="Texture2D" uid="uid://chk1crdd4nwlp" path="res://buttons/ATTACK_Clicked.png" id="8_msrrm"]
+[ext_resource type="Texture2D" uid="uid://xqdm7djyrv1o" path="res://buttons/MAIN_MENU.png" id="10_a5ypd"]
+[ext_resource type="Texture2D" uid="uid://ctcdskr8fvm8q" path="res://buttons/Main_Menu_Clicked.png" id="11_ry4h1"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7oala"]
 vertices = PackedVector2Array(2, -2, 8, -2, 8, 1, 2, 1, 2, 8, -2, 8, -2, 1, -2, -2, -8, 1, -8, -2, 2, -8, -2, -8)
@@ -798,27 +804,131 @@ navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_u8nlk")
 sources/1 = SubResource("TileSetAtlasSource_q5opr")
 
-[node name="Level" type="Node2D" node_paths=PackedStringArray("spawn_node", "troop_selector", "tile_map", "mana")]
+[node name="Level" type="Node2D"]
 script = ExtResource("1_pj4s3")
-spawn_node = NodePath("SpawnPoint")
-troop_selector = NodePath("TroopSelector")
-tile_map = NodePath("TileMap")
-mana = NodePath("Mana")
+spawn_node = Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":null)
+
+round_label = Object(Label,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":4,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":2,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","theme_override_fonts/font":ExtResource("6_ls3tk"),"text":"Round 1/7","label_settings":null,"horizontal_alignment":0,"vertical_alignment":0,"autowrap_mode":0,"justification_flags":163,"clip_text":false,"text_overrun_behavior":0,"uppercase":false,"tab_stops":PackedFloat32Array(),"lines_skipped":0,"max_lines_visible":-1,"visible_characters":-1,"visible_characters_behavior":0,"visible_ratio":1.0,"text_direction":0,"language":"","structured_text_bidi_override":0,"structured_text_bidi_override_options":[],"script":null)
+
+troop_delay = Object(Timer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","process_callback":1,"wait_time":0.6,"one_shot":false,"autostart":false,"script":null)
+
+troop_selector = Object(Container,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":3,"anchors_preset":11,"anchor_left":1.0,"anchor_top":0.0,"anchor_right":1.0,"anchor_bottom":1.0,"offset_left":503.0,"offset_top":0.0,"offset_right":914.0,"offset_bottom":0.0,"grow_horizontal":0,"grow_vertical":2,"rotation":0.0,"scale":Vector2(1, 1),"pivot_offset":Vector2(0, 0),"size_flags_horizontal":8,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":1,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","script":Resource("res://TroopSelector/troop_selector.gd"),"upgrade_menu":null,"troop_container":Object(FlowContainer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(280, 4.79213e-12),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":1,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","alignment":0,"vertical":false,"script":null)
+,"skeleton_scene":Array[PackedScene]([Resource("res://Troops/Skeleton.tscn"), Resource("res://Troops/Skeleton_2.tscn"), Resource("res://Troops/Skeleton_3.tscn")]),"orc_scene":Array[PackedScene]([Resource("res://Troops/Orc.tscn"), Resource("res://Troops/Orc_2.tscn"), Resource("res://Troops/Orc_3.tscn")]),"skeleton_button":Object(TextureButton,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(4.79213e-12, 50),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":2,"mouse_filter":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","disabled":false,"toggle_mode":false,"button_pressed":false,"action_mode":1,"button_mask":1,"keep_pressed_outside":false,"button_group":null,"shortcut":null,"shortcut_feedback":true,"shortcut_in_tooltip":true,"texture_normal":Resource("res://TroopIcons/Skeleton_Icon.png"),"texture_pressed":Resource("res://TroopIcons/Skeleton_Icon_Clicked.png"),"texture_hover":null,"texture_disabled":null,"texture_focused":null,"texture_click_mask":null,"ignore_texture_size":false,"stretch_mode":5,"flip_h":false,"flip_v":false,"script":null)
+,"orc_button":Object(TextureButton,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(4.79213e-12, 50),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":2,"mouse_filter":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","disabled":false,"toggle_mode":false,"button_pressed":false,"action_mode":1,"button_mask":1,"keep_pressed_outside":false,"button_group":null,"shortcut":null,"shortcut_feedback":true,"shortcut_in_tooltip":true,"texture_normal":Resource("res://TroopIcons/Orc_Icon.png"),"texture_pressed":Resource("res://TroopIcons/Orc_Icon_Clicked.png"),"texture_hover":null,"texture_disabled":null,"texture_focused":null,"texture_click_mask":null,"ignore_texture_size":false,"stretch_mode":5,"flip_h":false,"flip_v":false,"script":null)
+)
+
+tile_map = Object(TileMap,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":true,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"tile_set":SubResource("TileSet_kbalj"),"rendering_quadrant_size":16,"collision_animatable":false,"collision_visibility_mode":0,"navigation_visibility_mode":0,"format":2,"layer_0/name":"Ground","layer_0/enabled":true,"layer_0/modulate":Color(1, 1, 1, 1),"layer_0/y_sort_enabled":false,"layer_0/y_sort_origin":0,"layer_0/z_index":0,"layer_0/navigation_enabled":true,"layer_0/tile_data":PackedInt32Array(),"layer_1/name":"Props","layer_1/tile_data":PackedInt32Array(),"script":null)
+
+mana = Object(Container,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":3,"anchors_preset":0,"anchor_left":0.0,"anchor_top":0.0,"anchor_right":0.0,"anchor_bottom":0.0,"offset_left":0.0,"offset_top":0.0,"offset_right":40.0,"offset_bottom":40.0,"grow_horizontal":1,"grow_vertical":1,"rotation":0.0,"scale":Vector2(1, 1),"pivot_offset":Vector2(0, 0),"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":1,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","script":Resource("res://Mana UI/Mana.gd"),"mana":100,"label":Object(RichTextLabel,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":true,"custom_minimum_size":Vector2(400, 80),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","theme_override_fonts/normal_font":ExtResource("6_ls3tk"),"bbcode_enabled":false,"text":"","fit_content":false,"scroll_active":true,"scroll_following":false,"autowrap_mode":3,"tab_size":4,"context_menu_enabled":false,"shortcut_keys_enabled":true,"custom_effects":[],"meta_underlined":true,"hint_underlined":true,"threaded":false,"progress_bar_delay":1000,"selection_enabled":false,"deselect_on_focus_loss_enabled":true,"drag_and_drop_selection_enabled":true,"visible_characters":-1,"visible_characters_behavior":0,"visible_ratio":1.0,"text_direction":0,"language":"","structured_text_bidi_override":0,"structured_text_bidi_override_options":[],"script":null)
+)
+
+label = Object(Label,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":4,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":2,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","theme_override_fonts/font":ExtResource("6_ls3tk"),"text":"Time Left: 30","label_settings":null,"horizontal_alignment":0,"vertical_alignment":0,"autowrap_mode":0,"justification_flags":163,"clip_text":false,"text_overrun_behavior":0,"uppercase":false,"tab_stops":PackedFloat32Array(),"lines_skipped":0,"max_lines_visible":-1,"visible_characters":-1,"visible_characters_behavior":0,"visible_ratio":1.0,"text_direction":0,"language":"","structured_text_bidi_override":0,"structured_text_bidi_override_options":[],"script":null)
+
+start_wave_button = Object(TextureButton,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":2,"mouse_filter":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","disabled":false,"toggle_mode":false,"button_pressed":false,"action_mode":1,"button_mask":1,"keep_pressed_outside":false,"button_group":null,"shortcut":null,"shortcut_feedback":true,"shortcut_in_tooltip":true,"texture_normal":ExtResource("7_caw7d"),"texture_pressed":ExtResource("8_msrrm"),"texture_hover":null,"texture_disabled":null,"texture_focused":null,"texture_click_mask":null,"ignore_texture_size":false,"stretch_mode":2,"flip_h":false,"flip_v":false,"script":null)
+
+wave_timer = Object(Timer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","process_callback":1,"wait_time":30.0,"one_shot":true,"autostart":false,"script":null)
+
 
 [node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
 tile_set = SubResource("TileSet_kbalj")
 format = 2
 layer_0/name = "Ground"
 layer_1/name = "Props"
 layer_1/tile_data = PackedInt32Array()
 
+[node name="WinLoseScreen" parent="." instance=ExtResource("4_eypdy")]
+visible = false
+
 [node name="SpawnPoint" type="Node2D" parent="."]
 
 [node name="Troops" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Mana" parent="." instance=ExtResource("4_8g01y")]
+[node name="Mana" parent="." instance=ExtResource("4_eqrvp")]
 
 [node name="TroopSelector" parent="." instance=ExtResource("5_kkgmv")]
 offset_left = 503.0
 offset_right = 914.0
+
+[node name="Container" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -58.0
+offset_right = 2133.0
+offset_bottom = 669.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+mouse_filter = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Container"]
+layout_mode = 2
+alignment = 1
+
+[node name="StartWaveButton" type="TextureButton" parent="Container/HFlowContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_caw7d")
+texture_pressed = ExtResource("8_msrrm")
+
+[node name="WaveTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[node name="HFlowContainer" type="HFlowContainer" parent="."]
+offset_top = 12.0
+offset_right = 640.0
+offset_bottom = 87.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="HFlowContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_ls3tk")
+text = "Time Left: 30"
+
+[node name="TroopSelectDelay" type="Timer" parent="."]
+wait_time = 0.6
+
+[node name="HFlowContainer2" type="HFlowContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 209.0
+offset_top = 338.0
+offset_right = 636.0
+offset_bottom = 378.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="Label" type="Label" parent="HFlowContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_ls3tk")
+text = "Round 1/7"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 564.0
+offset_top = 313.0
+offset_right = 660.0
+offset_bottom = 344.0
+scale = Vector2(0.75, 0.75)
+text = "Main Menu"
+
+[node name="MainMenuButton" type="TextureButton" parent="."]
+offset_left = 560.0
+offset_top = 307.0
+offset_right = 949.0
+offset_bottom = 457.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("10_a5ypd")
+texture_pressed = ExtResource("11_ry4h1")
+
+[connection signal="pressed" from="Container/HFlowContainer/StartWaveButton" to="." method="_on_start_wave_button_pressed"]
+[connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]
+[connection signal="timeout" from="TroopSelectDelay" to="." method="_on_troop_select_delay_timeout"]
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]
