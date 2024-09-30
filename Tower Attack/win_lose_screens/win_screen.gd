@@ -14,9 +14,12 @@ var skull_empty:Texture2D = preload("res://main_menu/empty_skull.png")
 
 @export var skull_container:HFlowContainer
 
-func determine_results() -> void:
+func determine_results(soft_locked:bool = false) -> void:
 	print("determined")
-	if skulls == 0:
+	if soft_locked:
+		outcome_label.text = "You Soft Locked Yourself"
+		$LostSoundEffect.play()
+	elif skulls == 0:
 		outcome_label.text = "You Lose"
 		$LostSoundEffect.play()
 	else:
@@ -24,10 +27,10 @@ func determine_results() -> void:
 		$WinSoundEffect.play()
 		
 	
-			
-	
-	rounds_label.text = "It took you " + str(rounds_taken) + "/" + str(max_rounds) + " Rounds"
-	
+	if not soft_locked:
+		rounds_label.text = "It took you " + str(rounds_taken) + "/" + str(max_rounds) + " Rounds"
+	else:
+		rounds_label.text = "Try managing your mana better next time!"
 	$CenterContainer/HFlowContainer/Label3.text = "You got " + str(skulls) + " skulls"
 	show()
 	

@@ -4,11 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://ch6crlanccoyo" path="res://Components/stats.tscn" id="5_j6ylr"]
 [ext_resource type="PackedScene" uid="uid://c5ky47hdh6a4l" path="res://Components/movement_component.tscn" id="6_u6jvq"]
 
-[node name="NPC" type="CharacterBody2D" node_paths=PackedStringArray("timer", "move_component", "animation_player")]
+[node name="NPC" type="CharacterBody2D" node_paths=PackedStringArray("timer", "move_component", "animation_player", "radius_shape")]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_l8bmb")
 timer = NodePath("Timer")
 move_component = NodePath("MovementComponent")
 animation_player = NodePath("AnimationPlayer")
+radius_shape = NodePath("CollisionShape2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
@@ -24,5 +27,9 @@ animation_player = NodePath("../AnimationPlayer")
 animated_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 7.75473
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+debug_color = Color(0.827451, 0.396078, 0, 0.419608)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

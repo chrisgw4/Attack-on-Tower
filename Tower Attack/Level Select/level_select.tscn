@@ -299,110 +299,91 @@ layer_0/tile_data = PackedInt32Array(-196612, 393216, 4, -131076, 458752, 1, -65
 y_sort_enabled = true
 position = Vector2(423, 195)
 
-[node name="Priest" parent="Node2D" node_paths=PackedStringArray("center") instance=ExtResource("3_g1foi")]
+[node name="Priest" parent="Node2D" instance=ExtResource("3_g1foi")]
 position = Vector2(-5, 31)
-center = NodePath("..")
 range = 60.0
 
-[node name="Templar" parent="Node2D" node_paths=PackedStringArray("center") instance=ExtResource("4_4gg8i")]
+[node name="Templar" parent="Node2D" instance=ExtResource("4_4gg8i")]
 position = Vector2(38, -19)
-center = NodePath("..")
 range = 20.0
 
-[node name="Templar2" parent="Node2D" node_paths=PackedStringArray("center") instance=ExtResource("4_4gg8i")]
-center = NodePath("..")
+[node name="Templar2" parent="Node2D" instance=ExtResource("4_4gg8i")]
 range = 20.0
 
-[node name="Lancer" parent="Node2D" node_paths=PackedStringArray("center") instance=ExtResource("5_sb734")]
-center = NodePath("..")
+[node name="Lancer" parent="Node2D" instance=ExtResource("5_sb734")]
 range = 25.0
 
 [node name="Node2D2" type="Node2D" parent="."]
 y_sort_enabled = true
 position = Vector2(483, 300)
 
-[node name="Lancer" parent="Node2D2" node_paths=PackedStringArray("center") instance=ExtResource("5_sb734")]
+[node name="Lancer" parent="Node2D2" instance=ExtResource("5_sb734")]
 position = Vector2(46, -21)
-center = NodePath("..")
 range = 40.0
 
-[node name="Lancer2" parent="Node2D2" node_paths=PackedStringArray("center") instance=ExtResource("5_sb734")]
+[node name="Lancer2" parent="Node2D2" instance=ExtResource("5_sb734")]
 position = Vector2(-45, -13)
-center = NodePath("..")
 range = 40.0
 
-[node name="Lancer3" parent="Node2D2" node_paths=PackedStringArray("center") instance=ExtResource("5_sb734")]
-center = NodePath("..")
+[node name="Lancer3" parent="Node2D2" instance=ExtResource("5_sb734")]
 range = 40.0
 
 [node name="Node2D3" type="Node2D" parent="."]
 y_sort_enabled = true
 position = Vector2(466, 91)
 
-[node name="Priest" parent="Node2D3" node_paths=PackedStringArray("center") instance=ExtResource("3_g1foi")]
+[node name="Priest" parent="Node2D3" instance=ExtResource("3_g1foi")]
 position = Vector2(-45, -2)
-center = NodePath("..")
 range = 30.0
 
-[node name="Priest2" parent="Node2D3" node_paths=PackedStringArray("center") instance=ExtResource("3_g1foi")]
+[node name="Priest2" parent="Node2D3" instance=ExtResource("3_g1foi")]
 position = Vector2(23, -19)
-center = NodePath("..")
 range = 30.0
 
-[node name="Templar" parent="Node2D3" node_paths=PackedStringArray("center") instance=ExtResource("4_4gg8i")]
-center = NodePath("..")
+[node name="Templar" parent="Node2D3" instance=ExtResource("4_4gg8i")]
 range = 30.0
 
 [node name="Node2D4" type="Node2D" parent="."]
 y_sort_enabled = true
 position = Vector2(193, 183)
 
-[node name="Slime" parent="Node2D4" node_paths=PackedStringArray("center") instance=ExtResource("6_w46xl")]
-center = NodePath("..")
+[node name="Slime" parent="Node2D4" instance=ExtResource("6_w46xl")]
 range = 20.0
 
-[node name="Slime2" parent="Node2D4" node_paths=PackedStringArray("center") instance=ExtResource("6_w46xl")]
+[node name="Slime2" parent="Node2D4" instance=ExtResource("6_w46xl")]
 position = Vector2(36, -20)
-center = NodePath("..")
 range = 15.0
 
-[node name="OrcRider" parent="Node2D4" node_paths=PackedStringArray("center") instance=ExtResource("7_yrl68")]
-center = NodePath("..")
+[node name="OrcRider" parent="Node2D4" instance=ExtResource("7_yrl68")]
 range = 35.0
 
 [node name="Node2D5" type="Node2D" parent="."]
 y_sort_enabled = true
 position = Vector2(148, 78)
 
-[node name="Werewolf" parent="Node2D5" node_paths=PackedStringArray("center") instance=ExtResource("8_irxl1")]
-center = NodePath("..")
+[node name="Werewolf" parent="Node2D5" instance=ExtResource("8_irxl1")]
 range = 30.0
 
-[node name="GreatSwordSkeleton" parent="Node2D5" node_paths=PackedStringArray("center") instance=ExtResource("9_jngkt")]
+[node name="GreatSwordSkeleton" parent="Node2D5" instance=ExtResource("9_jngkt")]
 position = Vector2(28, 7)
-center = NodePath("..")
 range = 25.0
 
-[node name="OrcRider" parent="Node2D5" node_paths=PackedStringArray("center") instance=ExtResource("7_yrl68")]
-center = NodePath("..")
+[node name="OrcRider" parent="Node2D5" instance=ExtResource("7_yrl68")]
 range = 20.0
 
 [node name="Node2D6" type="Node2D" parent="."]
 y_sort_enabled = true
 position = Vector2(166, 298)
 
-[node name="OrcRider" parent="Node2D6" node_paths=PackedStringArray("center") instance=ExtResource("7_yrl68")]
-center = NodePath("..")
+[node name="OrcRider" parent="Node2D6" instance=ExtResource("7_yrl68")]
 range = 30.0
 
-[node name="Werewolf" parent="Node2D6" node_paths=PackedStringArray("center") instance=ExtResource("8_irxl1")]
+[node name="Werewolf" parent="Node2D6" instance=ExtResource("8_irxl1")]
 position = Vector2(-54, 5)
-center = NodePath("..")
 range = 30.0
 
-[node name="Slime" parent="Node2D6" node_paths=PackedStringArray("center") instance=ExtResource("6_w46xl")]
+[node name="Slime" parent="Node2D6" instance=ExtResource("6_w46xl")]
 position = Vector2(41, 4)
-center = NodePath("..")
 range = 30.0
 
 [node name="Tower06" type="Sprite2D" parent="."]

@@ -56,7 +56,7 @@ func _clean_up_death() -> void:
 func _physics_process(delta: float) -> void:
 	if start_attacking:
 		pos_to_check = Vector2.ZERO
-		attack_delay.start()
+		attack_delay.start(0.01)
 		start_attacking = false
 	if health_component.current_hp >0:
 		time_alive += delta

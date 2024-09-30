@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cdwgygfoa6ru2"]
+[gd_scene load_steps=30 format=3 uid="uid://cdwgygfoa6ru2"]
 
 [ext_resource type="Script" path="res://TroopSelector/troop_selector.gd" id="1_00xp4"]
 [ext_resource type="PackedScene" uid="uid://dju42hngi6bie" path="res://Troops/Skeleton.tscn" id="2_cdffr"]
@@ -16,8 +16,19 @@
 [ext_resource type="FontFile" uid="uid://bsqyetpr5ufu8" path="res://Fonts/joystix monospace.otf" id="10_cpvyu"]
 [ext_resource type="Texture2D" uid="uid://b2qx203cql8ia" path="res://TroopIcons/Orc_Icon.png" id="11_5d8vl"]
 [ext_resource type="Texture2D" uid="uid://ddv0b2x1p2ka4" path="res://TroopIcons/Orc_Icon_Clicked.png" id="12_opeaf"]
+[ext_resource type="PackedScene" uid="uid://buc3dtjeyg3id" path="res://TroopSelector/troop_icon_button.tscn" id="13_3g3vw"]
+[ext_resource type="Texture2D" uid="uid://by5rfp006qw4c" path="res://TroopIcons/Skeleton2_Icon.png" id="14_a350v"]
+[ext_resource type="Texture2D" uid="uid://b2sdxvgv6cnru" path="res://TroopIcons/Skeleton_3_Icon.png" id="15_6b3s0"]
+[ext_resource type="Texture2D" uid="uid://dwy73lkj5dgyh" path="res://TroopIcons/Skeleton2_Icon_Clicked.png" id="15_6it1h"]
+[ext_resource type="Texture2D" uid="uid://cw8r8fqnq0et3" path="res://TroopIcons/Skeleton3_Icon_Clicked.png" id="16_q0un3"]
 [ext_resource type="Texture2D" uid="uid://c3o5jfwoxqo8y" path="res://TroopIcons/Werewolf_Icon.png" id="17_ynl11"]
 [ext_resource type="Texture2D" uid="uid://dwi5u1olosa6u" path="res://TroopIcons/Werewolf_Icon_Clicked.png" id="18_0f6ay"]
+[ext_resource type="Texture2D" uid="uid://gfus6cuw8rsl" path="res://TroopIcons/Orc2_Icon.png" id="22_0x16p"]
+[ext_resource type="Texture2D" uid="uid://bbnoqdeeog6c7" path="res://TroopIcons/Orc3_Icon.png" id="23_n3m0p"]
+[ext_resource type="Texture2D" uid="uid://cwo0hyywf0hve" path="res://TroopIcons/Orc2_Icon_Clicked.png" id="24_h6gvg"]
+[ext_resource type="Texture2D" uid="uid://cr406aarliuf1" path="res://TroopIcons/Orc3_Icon_Clicked.png" id="25_hmp26"]
+[ext_resource type="Texture2D" uid="uid://es3lvhhef8n1" path="res://TroopIcons/Werebear_Icon.png" id="28_neeyf"]
+[ext_resource type="Texture2D" uid="uid://2qy6532d655i" path="res://TroopIcons/Werebear_Icon_Clicked.png" id="29_tr1v8"]
 
 [node name="TroopSelector" type="Container" node_paths=PackedStringArray("troop_container", "skeleton_button", "orc_button", "were_button")]
 anchors_preset = 11
@@ -58,27 +69,14 @@ custom_minimum_size = Vector2(4.79213e-12, 75)
 layout_mode = 2
 theme_override_constants/v_separation = -8
 
-[node name="SkeletonButton" type="TextureButton" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer"]
-custom_minimum_size = Vector2(4.79213e-12, 50)
+[node name="SkeletonButton" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer" instance=ExtResource("13_3g3vw")]
 layout_mode = 2
 texture_normal = ExtResource("3_pfjey")
 texture_pressed = ExtResource("4_lcl87")
-stretch_mode = 5
-
-[node name="RichTextLabel" type="RichTextLabel" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer/SkeletonButton"]
-custom_minimum_size = Vector2(70, 30)
-layout_mode = 2
-offset_left = 16.0
-offset_top = 2.0
-offset_right = 86.0
-offset_bottom = 32.0
-scale = Vector2(0.44, 0.44)
-mouse_filter = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/normal_font = ExtResource("10_cpvyu")
-bbcode_enabled = true
-text = "[center][img=30x25]res://Mana/blue_crystal_0003.png[/img]10"
+icons_normal = Array[Texture2D]([ExtResource("3_pfjey"), ExtResource("14_a350v"), ExtResource("15_6b3s0")])
+icons_pressed = Array[Texture2D]([ExtResource("4_lcl87"), ExtResource("15_6it1h"), ExtResource("16_q0un3")])
+mana_cost = 10
+troop_scenes = Array[PackedScene]([ExtResource("2_cdffr"), ExtResource("3_7fevt"), ExtResource("4_cluwa")])
 
 [node name="SkeletonUpgrade" type="TextureButton" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer"]
 layout_mode = 2
@@ -106,27 +104,14 @@ custom_minimum_size = Vector2(4.79213e-12, 75)
 layout_mode = 2
 theme_override_constants/v_separation = -8
 
-[node name="OrcButton" type="TextureButton" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer2"]
-custom_minimum_size = Vector2(4.79213e-12, 50)
+[node name="OrcButton" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer2" instance=ExtResource("13_3g3vw")]
 layout_mode = 2
 texture_normal = ExtResource("11_5d8vl")
 texture_pressed = ExtResource("12_opeaf")
-stretch_mode = 5
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer2/OrcButton"]
-custom_minimum_size = Vector2(70, 30)
-layout_mode = 2
-offset_left = 16.0
-offset_top = 2.0
-offset_right = 86.0
-offset_bottom = 32.0
-scale = Vector2(0.44, 0.44)
-mouse_filter = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/normal_font = ExtResource("10_cpvyu")
-bbcode_enabled = true
-text = "[center][img=30x25]res://Mana/blue_crystal_0003.png[/img]15"
+icons_normal = Array[Texture2D]([ExtResource("11_5d8vl"), ExtResource("22_0x16p"), ExtResource("23_n3m0p")])
+icons_pressed = Array[Texture2D]([ExtResource("12_opeaf"), ExtResource("24_h6gvg"), ExtResource("25_hmp26")])
+mana_cost = 15
+troop_scenes = Array[PackedScene]([ExtResource("4_fg3o6"), ExtResource("5_2n5jg"), ExtResource("6_4mob3")])
 
 [node name="OrcUpgrade" type="TextureButton" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer2"]
 layout_mode = 2
@@ -155,27 +140,14 @@ custom_minimum_size = Vector2(4.79213e-12, 75)
 layout_mode = 2
 theme_override_constants/v_separation = -8
 
-[node name="WereButton" type="TextureButton" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer3"]
-custom_minimum_size = Vector2(4.79213e-12, 50)
+[node name="WereButton" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer3" instance=ExtResource("13_3g3vw")]
 layout_mode = 2
 texture_normal = ExtResource("17_ynl11")
 texture_pressed = ExtResource("18_0f6ay")
-stretch_mode = 5
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer3/WereButton"]
-custom_minimum_size = Vector2(70, 30)
-layout_mode = 2
-offset_left = 16.0
-offset_top = 2.0
-offset_right = 86.0
-offset_bottom = 32.0
-scale = Vector2(0.44, 0.44)
-mouse_filter = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/normal_font = ExtResource("10_cpvyu")
-bbcode_enabled = true
-text = "[center][img=30x25]res://Mana/blue_crystal_0003.png[/img]20"
+icons_normal = Array[Texture2D]([ExtResource("17_ynl11"), ExtResource("28_neeyf")])
+icons_pressed = Array[Texture2D]([ExtResource("18_0f6ay"), ExtResource("29_tr1v8")])
+mana_cost = 20
+troop_scenes = Array[PackedScene]([ExtResource("8_f5ixj"), ExtResource("9_kdwwk")])
 
 [node name="WereUpgrade" type="TextureButton" parent="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer3"]
 layout_mode = 2
@@ -196,12 +168,9 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/normal_font = ExtResource("10_cpvyu")
 bbcode_enabled = true
-text = "[center][img=30x25]res://Mana/blue_crystal_0003.png[/img]120"
+text = "[center][img=30x25]res://Mana/blue_crystal_0003.png[/img]150"
 scroll_active = false
 
-[connection signal="pressed" from="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer/SkeletonButton" to="." method="_on_skeleton_button_pressed"]
 [connection signal="pressed" from="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer/SkeletonUpgrade" to="." method="_on_skeleton_upgrade_pressed"]
-[connection signal="pressed" from="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer2/OrcButton" to="." method="_on_orc_button_pressed"]
 [connection signal="pressed" from="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer2/OrcUpgrade" to="." method="_on_orc_upgrade_pressed"]
-[connection signal="pressed" from="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer3/WereButton" to="." method="_on_were_button_pressed"]
 [connection signal="pressed" from="HFlowContainer/VFlowContainer/ScrollContainer/FlowContainer/VFlowContainer3/WereUpgrade" to="." method="_on_were_upgrade_pressed"]

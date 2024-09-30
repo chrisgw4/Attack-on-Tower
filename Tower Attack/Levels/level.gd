@@ -60,13 +60,22 @@ func _physics_process(delta: float) -> void:
 	
 
 func _ready() -> void:
+	#Engine.time_scale = 1.5
 	troop_selector.connect("spawn_troop", _spawn_troop_in_game)
 	troop_selector.connect("upgrade_pressed", _check_upgrade_cost)
 	castle.health_component.connect("died", _show_win_screen)
 	$PlanMusic.autoplay = true
 	$PlanMusic.play()
 	round_number = 0
+	mana.connect("too_little_mana", _check_soft_lock)
 
+
+# Checks if you get soft locked when you run out of mana
+func _check_soft_lock() -> void:
+	# Check that a wave is not active
+	if not wave_active or (wave_active and troop_count == 0):
+		$WinLoseScreen.determine_results(true)
+	
 
 var shown_win:bool = false
 
@@ -103,21 +112,23 @@ func _check_upgrade_cost(cost, type) -> void:
 		troop_selector.upgrade_were()
 	
 
-func _spawn_troop_in_game(troop, stats_upgrade) -> void:
+func _spawn_troop_in_game(troop_scene, cost) -> void:
 	if stop_send_troops:
 		return
 	if not can_send_troops:
 		return
 	if not wave_active:
 		return
-	if mana.mana < stats_upgrade.cost:
+	if mana.mana < cost:
 		return
 	$MenuClick.play()
-	mana.mana -= stats_upgrade.cost
+	
+	mana.mana -= cost
+	var troop = troop_scene.instantiate()
 	troop.global_position = spawn_node.global_position
 	troop.stats.start_velocity = start_direction
-	troop.stats.update_stats(stats_upgrade)
-	troop.cost = stats_upgrade.cost
+	#troop.stats.update_stats(stats_upgrade)
+	troop.cost = cost
 	tile_map.add_child(troop)
 	troop.connect("death_time", _mana_increase )
 	troop_count += 1

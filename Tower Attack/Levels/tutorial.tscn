@@ -46,28 +46,24 @@ position = Vector2(383, 152)
 y_sort_enabled = true
 position = Vector2(277, 168)
 
-[node name="Priest" parent="Node2D" index="0" node_paths=PackedStringArray("center") instance=ExtResource("5_864ac")]
+[node name="Priest" parent="Node2D" index="0" instance=ExtResource("5_864ac")]
 position = Vector2(-25, -13)
-center = NodePath("..")
 range = 20.0
 
-[node name="Templar" parent="Node2D" index="1" node_paths=PackedStringArray("center") instance=ExtResource("6_2isla")]
+[node name="Templar" parent="Node2D" index="1" instance=ExtResource("6_2isla")]
 position = Vector2(34, -4)
-center = NodePath("..")
 range = 20.0
 
 [node name="Node2D2" type="Node2D" parent="." index="10"]
 y_sort_enabled = true
 position = Vector2(63, 226)
 
-[node name="Lancer" parent="Node2D2" index="0" node_paths=PackedStringArray("center") instance=ExtResource("7_2y8p0")]
+[node name="Lancer" parent="Node2D2" index="0" instance=ExtResource("7_2y8p0")]
 position = Vector2(-19, -20)
-center = NodePath("..")
 range = 20.0
 
-[node name="Templar" parent="Node2D2" index="1" node_paths=PackedStringArray("center") instance=ExtResource("6_2isla")]
+[node name="Templar" parent="Node2D2" index="1" instance=ExtResource("6_2isla")]
 position = Vector2(10, 13)
-center = NodePath("..")
 range = 20.0
 
 [node name="action_blocker" type="TextureRect" parent="." index="18"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://efalvtbgbe88"]
+
+[ext_resource type="PackedScene" uid="uid://buc3dtjeyg3id" path="res://TroopSelector/troop_icon_button.tscn" id="1_f1paw"]
+[ext_resource type="PackedScene" uid="uid://c6ux6d4312ivg" path="res://TroopSelector/upgrade_troop_button.tscn" id="3_8a13x"]
+
+[node name="TroopIconContainer" type="VFlowContainer"]
+custom_minimum_size = Vector2(4.79213e-12, 75)
+offset_right = 64.0
+offset_bottom = 75.0
+theme_override_constants/v_separation = -8
+
+[node name="TroopIconButton" parent="." instance=ExtResource("1_f1paw")]
+layout_mode = 2
+
+[node name="UpgradeTroopButton" parent="." instance=ExtResource("3_8a13x")]
+layout_mode = 2

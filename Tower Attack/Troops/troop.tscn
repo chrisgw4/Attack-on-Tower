@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://crjvw1jr1m1kr"]
+[gd_scene load_steps=15 format=3 uid="uid://crjvw1jr1m1kr"]
 
 [ext_resource type="Script" path="res://Troops/Troop.gd" id="1_tx33t"]
 [ext_resource type="PackedScene" uid="uid://ch6crlanccoyo" path="res://Components/stats.tscn" id="2_kuxgo"]
@@ -9,9 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://cag3p1foah62y" path="res://HurtHitBox/hitbox.tscn" id="7_ywtt5"]
 [ext_resource type="AudioStream" uid="uid://dw5c8mk3tmvov" path="res://sound effects/attack_sound.wav" id="8_jvknh"]
 [ext_resource type="AudioStream" uid="uid://5xhtbpwmv3nb" path="res://sound effects/hurt.wav" id="9_fkk7d"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qj3ks"]
-animations = []
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jlc4g"]
 radius = 2.0
@@ -68,8 +65,6 @@ attack_delay = NodePath("AttackDelay")
 hurt_animation = NodePath("HurtFlash")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_qj3ks")
-animation = &""
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
